@@ -12,9 +12,22 @@
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_gallery" />
+
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_drying"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_drying" />
+        <item
+            android:id="@+id/nav_harvest"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_harvest" />
+        <item
+            android:id="@+id/nav_plantation"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_plantation" />
+        <item
+            android:id="@+id/nav_pre_processing"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_pre_processing" />
     </group>
 </menu>

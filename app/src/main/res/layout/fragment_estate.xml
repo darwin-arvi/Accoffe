@@ -7,7 +7,7 @@
     tools:context=".ui.estate.EstateFragment">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tf_name_estate"
+        android:id="@+id/tf_ename"
         android:layout_width ="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -16,13 +16,13 @@
         android:hint="@string/name_estate"
         tools:ignore="MissingConstraints">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_name_estate"
+            android:id="@+id/et_ename"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tf_year_crop"
+        android:id="@+id/tf_eyear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -31,14 +31,14 @@
         android:hint="@string/year_crop"
         tools:ignore="MissingConstraints">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_year_crop"
+            android:id="@+id/et_eyear"
             android:inputType="date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tf_product_area_estate"
+        android:id="@+id/tf_eproductarea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -47,13 +47,13 @@
         android:hint="@string/h_product_area"
         tools:ignore="MissingConstraints">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_product_area_estate"
+            android:id="@+id/et_eproductarea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tf_total_area_estate"
+        android:id="@+id/tf_etotalarea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -62,13 +62,13 @@
         android:hint="@string/total_area"
         tools:ignore="MissingConstraints">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_total_area_estate"
+            android:id="@+id/et_etotalarea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tf_convertion_almendra_estate"
+        android:id="@+id/tf_econvertionalmendra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -77,13 +77,13 @@
         android:hint="@string/convertion_almendra"
         tools:ignore="MissingConstraints">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_convertion_almendra_estate"
+            android:id="@+id/et_econvertionalmendra"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tf_type_crop_estate"
+        android:id="@+id/tf_etypecrop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -92,13 +92,13 @@
         android:hint="@string/type_crop"
         tools:ignore="MissingConstraints">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_type_crop_estate"
+            android:id="@+id/et_etypecrop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tf_dolar_peso_estate"
+        android:id="@+id/tf_edolar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -107,7 +107,7 @@
         android:hint="@string/dolar_peso"
         tools:ignore="MissingConstraints">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_dolar_peso_estate"
+            android:id="@+id/et_edolar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -124,10 +124,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:singleLine="true"
-            android:text="back"
+            android:text="@string/back"
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            style="?android:attr/buttonBarButtonStyle" />
         <Button
             android:id="@+id/boton_save"
             android:layout_width="match_parent"
@@ -136,7 +137,8 @@
 
             android:singleLine="true"
             android:layout_weight="1"
-            android:text="save"
-            android:textStyle="bold" />
+            android:text="@string/save"
+            android:textStyle="bold"
+            style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>

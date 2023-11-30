@@ -18,8 +18,23 @@
         tools:layout="@layout/fragment_estate" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.fup.accoffe.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_drying"
+        android:name="com.fup.accoffe.ui.drying.DryingFragment"
+        android:label="@string/menu_drying"
+        tools:layout="@layout/fragment_drying" />
+    <fragment
+        android:id="@+id/nav_harvest"
+        android:name="com.fup.accoffe.ui.harvest.HarvestFragment"
+        android:label="@string/menu_harvest"
+        tools:layout="@layout/fragment_harvest" />
+    <fragment
+        android:id="@+id/nav_plantation"
+        android:name="com.fup.accoffe.ui.plantation.PlantationFragment"
+        android:label="@string/menu_plantation"
+        tools:layout="@layout/fragment_plantation" />
+    <fragment
+        android:id="@+id/nav_pre_processing"
+        android:name="com.fup.accoffe.ui.pre_processing.PreProcessingFragment"
+        android:label="@string/menu_pre_processing"
+        tools:layout="@layout/fragment_pre_processing" />
 </navigation>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.dashboard.DashboardFragment">
+    tools:context=".ui.harvest.HarvestListFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
-            android:text="Estate List"
+            android:text="Harvest List"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -35,7 +35,7 @@
         android:layout_marginTop="8dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvEstates"
+            android:id="@+id/rvHarvest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

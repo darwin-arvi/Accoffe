@@ -37,4 +37,29 @@
         android:name="com.fup.accoffe.ui.pre_processing.PreProcessingFragment"
         android:label="@string/menu_pre_processing"
         tools:layout="@layout/fragment_pre_processing" />
+    <fragment
+        android:id="@+id/dashboardInfoFragment"
+        android:name="com.fup.accoffe.ui.dashboard.DashboardInfoFragment"
+        android:label="fragment_dashboard_info"
+        tools:layout="@layout/fragment_dashboard_info" />
+    <fragment
+        android:id="@+id/plantationListFragment"
+        android:name="com.fup.accoffe.ui.plantation.PlantationListFragment"
+        android:label="fragment_plantation_list"
+        tools:layout="@layout/fragment_plantation_list" />
+    <fragment
+        android:id="@+id/dryingListFragment"
+        android:name="com.fup.accoffe.ui.drying.DryingListFragment"
+        android:label="fragment_drying_list"
+        tools:layout="@layout/fragment_drying_list" />
+    <fragment
+        android:id="@+id/preProcessingListFragment"
+        android:name="com.fup.accoffe.ui.pre_processing.PreProcessingListFragment"
+        android:label="fragment_pre_processing_list"
+        tools:layout="@layout/fragment_pre_processing_list" />
+    <fragment
+        android:id="@+id/harvestListFragment"
+        android:name="com.fup.accoffe.ui.harvest.HarvestListFragment"
+        android:label="fragment_harvest_list"
+        tools:layout="@layout/fragment_harvest_list" />
 </navigation>

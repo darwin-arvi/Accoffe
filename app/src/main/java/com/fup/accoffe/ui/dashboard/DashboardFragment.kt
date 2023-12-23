@@ -38,10 +38,20 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
         fetchAllDataFromFirestore("estate")
+        addNewEstate()
         return root
     }
 
+    private fun addNewEstate(){
+        val estateId = arguments?.getString("estateId")
+        Log.d("DashboardInfoFragment", "Received estateId: $estateId")
 
+        binding.btnAddEstate.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("estateId", estateId)
+            Navigation.findNavController(requireView()).navigate(R.id.nav_estate,bundle)
+        }
+    }
     private fun fetchAllDataFromFirestore(collectionName: String) {
         GlobalScope.launch(Dispatchers.IO) {
             try {

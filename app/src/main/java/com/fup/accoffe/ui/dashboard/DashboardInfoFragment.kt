@@ -31,10 +31,19 @@ class DashboardInfoFragment : Fragment() {
         val root: View = binding.root
 
         buttonfunctions()
-
-
+        backDashbordInfo()
         return root
 
+    }
+    private fun backDashbordInfo(){
+        val estateId = arguments?.getString("estateId")
+        Log.d("DashboardInfoFragment", "Received estateId: $estateId")
+
+        binding.btnback1.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("estateId", estateId)
+            Navigation.findNavController(requireView()).navigate(R.id.nav_home,bundle)
+        }
     }
     private fun buttonfunctions(){
         val estateId = arguments?.getString("estateId")

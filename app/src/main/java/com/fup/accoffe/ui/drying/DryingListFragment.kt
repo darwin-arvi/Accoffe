@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fup.accoffe.R
 import com.fup.accoffe.adapters.DryingListAdapter
@@ -43,8 +44,31 @@ class DryingListFragment : Fragment() {
         _binding = FragmentDryingListBinding.inflate(inflater, container, false)
         val root: View = binding.root
         fetchAllDataFromFirestore("drying")
+        addNewDrying()
+        backDrying()
         return root
 
+    }
+    private fun backDrying(){
+        val estateId = arguments?.getString("estateId")
+        Log.d("DashboardInfoFragment", "Received estateId: $estateId")
+
+        binding.btnback1.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("estateId", estateId)
+            Navigation.findNavController(requireView()).navigate(R.id.dashboardInfoFragment,bundle)
+        }
+    }
+    private fun addNewDrying(){
+        val estateId = arguments?.getString("estateId")
+        Log.d("DashboardInfoFragment", "Received estateId: $estateId")
+
+        binding.btnAddDrying.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("estateId", estateId)
+            Navigation.findNavController(requireView()).navigate(R.id.nav_drying,bundle)
+
+        }
     }
 
     private fun fetchAllDataFromFirestore(collectionName: String) {

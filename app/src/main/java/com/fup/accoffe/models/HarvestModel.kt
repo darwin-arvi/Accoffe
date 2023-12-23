@@ -6,5 +6,6 @@ data class HarvestModel(
     val h_maq_man: String?="",
     val h_combustible: String?="",
     val h_transport: String?="",
-    val l_Pjornal_recole: String?=""
+    val l_Pjornal_recole: String?="",
+    val estateId: String?=""
 )

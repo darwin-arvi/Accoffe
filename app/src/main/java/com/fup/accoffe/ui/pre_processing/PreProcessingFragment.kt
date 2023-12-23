@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fup.accoffe.R
 import com.fup.accoffe.adapters.EstateListAdapter
@@ -16,8 +17,10 @@ import com.fup.accoffe.models.EnergyModel
 import com.fup.accoffe.models.EstateDataModel
 import com.fup.accoffe.models.EstateInfoModel
 import com.fup.accoffe.models.EstateModel
+import com.fup.accoffe.models.PlantationModel
 import com.fup.accoffe.models.PreProcessingModel
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -50,7 +53,7 @@ class PreProcessingFragment : Fragment() {
     private lateinit var b_val_infra: String
     private lateinit var b_promed_electrico: String
     private lateinit var b_num_costales: String
-    private lateinit var beneficios_por_año: String
+    private lateinit var b_gf_Benef: String
 
     val v_dolar2014 = 2000.0
     val transformidad_t1 = 26500000000000.0
@@ -153,8 +156,40 @@ class PreProcessingFragment : Fragment() {
         _binding = FragmentPreProcessingBinding.inflate(inflater, container, false)
         val root: View = binding.root
         initViews()
+        savePreProcessing()
+        backPreProcessing()
         return root
 
+    }
+
+    private fun savePreProcessing(){
+        binding.botonSave.setOnClickListener {
+            val preProcessingCollection = db.collection("beaten")
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    initViews()
+                    val estateId = arguments?.getString("estateId")
+                    val preProcessing = PreProcessingModel("",b_num_costales.toDouble(), b_promed_electrico.toDouble(),
+                        b_val_infra.toDouble(),b_year, b_val_maq.toDouble(), b_gf_Benef.toDouble(), b_dolar.toDouble(),estateId)
+
+                    val documentReference = preProcessingCollection.add(preProcessing).await()
+                    println("Document created with ID: ${documentReference.id}")
+                } catch (e: Exception) {
+                    // Manejar errores si es necesario
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
+    private fun backPreProcessing(){
+        val estateId = arguments?.getString("estateId")
+        Log.d("DashboardInfoFragment", "Received estateId: $estateId")
+
+        binding.botonBack.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("estateId", estateId)
+            Navigation.findNavController(requireView()).navigate(R.id.preProcessingListFragment,bundle)
+        }
     }
 
     private fun initViews() {
@@ -164,7 +199,7 @@ class PreProcessingFragment : Fragment() {
         b_val_infra= binding.etBValInfra.text.toString()
         b_promed_electrico= binding.etBPromedElectrico.text.toString()
         b_num_costales= binding.etBNumCostales.text.toString()
-        beneficios_por_año= binding.etBeneficiosPorAO.text.toString()
+        b_gf_Benef = binding.etBGfBenef.text.toString()
     }
 
 }

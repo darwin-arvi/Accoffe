@@ -17,39 +17,39 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="148dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="96dp"
             android:text="Edit"
-            app:layout_constraintStart_toEndOf="@+id/harvestName"
-            app:layout_constraintTop_toBottomOf="@+id/button3" />
+            app:layout_constraintStart_toEndOf="@+id/button3"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="184dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="96dp"
             android:text="Delete"
-            app:layout_constraintStart_toEndOf="@+id/harvestYear"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintStart_toEndOf="@+id/button"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="96dp"
             android:text="Info"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.932"
-            app:layout_constraintStart_toEndOf="@+id/harvestId"
+            app:layout_constraintHorizontal_bias="0.052"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/harvestId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:text="asjipfoij03982459023"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -57,31 +57,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/harvestName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/black"
-
-            android:text="Nombre prueba"
-            android:textSize="18sp"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/harvestId" />
-
-        <TextView
             android:id="@+id/harvestYear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="12dp"
-            android:textColor="@color/black"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="44dp"
 
             android:text="17-04-2023"
+            android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/harvestName" />
+            app:layout_constraintTop_toTopOf="@+id/harvestId" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

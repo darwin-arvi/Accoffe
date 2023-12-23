@@ -18,5 +18,6 @@ data class DryingModel(
     val p_viento: Double? = 0.0,
     val p_admosfra: Double? = 0.0,
     val p_densidadA: Double? = 0.0,
-    val p_insolation: Double? = 0.0
+    val p_insolation: Double? = 0.0,
+    val estateId:String?=""
 )

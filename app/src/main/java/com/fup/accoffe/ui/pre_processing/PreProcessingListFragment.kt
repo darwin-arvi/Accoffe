@@ -45,9 +45,19 @@ class PreProcessingListFragment : Fragment() {
         val root: View = binding.root
         fetchAllDataFromFirestore("beaten")
         addNewPre_processing()
+        backPreProcessinglist()
         return root
     }
+    private fun backPreProcessinglist(){
+        val estateId = arguments?.getString("estateId")
+        Log.d("DashboardInfoFragment", "Received estateId: $estateId")
 
+        binding.btnback1.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("estateId", estateId)
+            Navigation.findNavController(requireView()).navigate(R.id.dashboardInfoFragment,bundle)
+        }
+    }
     private fun addNewPre_processing(){
         val estateId = arguments?.getString("estateId")
         Log.d("DashboardInfoFragment", "Received estateId: $estateId")
@@ -61,7 +71,9 @@ class PreProcessingListFragment : Fragment() {
     private fun fetchAllDataFromFirestore(collectionName: String) {
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val collection = db.collection(collectionName).get().await()
+                val estateId = arguments?.getString("estateId")
+                Log.d("DashboardInfoFragment", "Received estateId: $estateId")
+                val collection = db.collection(collectionName).whereEqualTo("estateId", estateId).get().await()
                 val dataList = mutableListOf<PreProcessingModel>()
 
                 for (document in collection.documents) {

@@ -44,9 +44,19 @@ class PlantationListFragment : Fragment() {
         val root: View = binding.root
         fetchAllDataFromFirestore("planting")
         addNewPlantation()
+        backPlantation()
         return root
     }
+    private fun backPlantation(){
+        val estateId = arguments?.getString("estateId")
+        Log.d("DashboardInfoFragment", "Received estateId: $estateId")
 
+        binding.btnback1.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("estateId", estateId)
+            Navigation.findNavController(requireView()).navigate(R.id.dashboardInfoFragment,bundle)
+        }
+    }
     private fun addNewPlantation(){
         val estateId = arguments?.getString("estateId")
         Log.d("DashboardInfoFragment", "Received estateId: $estateId")

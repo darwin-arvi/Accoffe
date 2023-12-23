@@ -110,16 +110,16 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tf_beneficios_por_año"
+            android:id="@+id/tf_b_gf_Benef"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/beneficios_por_a_o"
+            android:hint="beneficios por año"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_beneficios_por_año"
+                android:id="@+id/et_b_gf_Benef"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>

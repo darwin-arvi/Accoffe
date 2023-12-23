@@ -17,31 +17,32 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="148dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="92dp"
             android:text="Edit"
-            app:layout_constraintStart_toEndOf="@+id/estateName"
-            app:layout_constraintTop_toBottomOf="@+id/estateBtnInfo" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.193"
+            app:layout_constraintStart_toEndOf="@+id/estateBtnInfo"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="184dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="92dp"
             android:text="Delete"
-            app:layout_constraintStart_toEndOf="@+id/estateYear"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintStart_toEndOf="@+id/button"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/estateBtnInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="92dp"
             android:text="Info"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.932"
-            app:layout_constraintStart_toEndOf="@+id/estateId"
+            app:layout_constraintHorizontal_bias="0.091"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -49,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="16dp"
             android:text="asjipfoij03982459023"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -62,9 +63,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginTop="8dp"
-            android:textColor="@color/black"
-
             android:text="Nombre prueba"
+
+            android:textColor="@color/black"
             android:textSize="18sp"
 
             app:layout_constraintStart_toStartOf="parent"
@@ -74,14 +75,14 @@
             android:id="@+id/estateYear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="12dp"
-            android:textColor="@color/black"
+            android:layout_marginStart="32dp"
 
+            android:layout_marginTop="48dp"
             android:text="17-04-2023"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/estateName" />
+            app:layout_constraintStart_toEndOf="@+id/estateName"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

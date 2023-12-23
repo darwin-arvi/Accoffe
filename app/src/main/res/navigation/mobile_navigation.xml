@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_estate"
         android:name="com.fup.accoffe.ui.estate.EstateFragment"
-        android:label="@string/menu_gallery"
+        android:label="estate"
         tools:layout="@layout/fragment_estate" />
 
     <fragment

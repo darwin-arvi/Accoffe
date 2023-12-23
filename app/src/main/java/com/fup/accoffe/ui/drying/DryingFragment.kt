@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fup.accoffe.R
 import com.fup.accoffe.adapters.DryingListAdapter
@@ -16,7 +17,9 @@ import com.fup.accoffe.models.EnergyModel
 import com.fup.accoffe.models.EstateDataModel
 import com.fup.accoffe.models.EstateInfoModel
 import com.fup.accoffe.models.EstateModel
+import com.fup.accoffe.models.PreProcessingModel
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -227,10 +230,42 @@ class DryingFragment : Fragment() {
         _binding = FragmentDryingBinding.inflate(inflater, container, false)
         val root: View = binding.root
         initViews()
+        saveDrying()
+        backDrying()
         return root
     }
 
+    private fun saveDrying(){
+        binding.botonSave.setOnClickListener {
+            val dryingCollection = db.collection("drying")
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    initViews()
+                    val estateId = arguments?.getString("estateId")
+                    val drying = DryingModel("",d_year,d_produccion.toDouble(), d_dias_secado.toDouble(), d_k.toDouble(),
+                        d_patio_secado.toDouble(),d_val_maq.toDouble(),d_gf_Benef.toDouble(),d_combustible.toDouble(),
+                        d_val_infra.toDouble(),d_promedio_electrico.toDouble(),l_Pdolar.toDouble(),p_enegia_lib.toDouble(),
+                        p_densidad2.toDouble(),p_viento.toDouble(),p_admosfra.toDouble(),p_densidadA.toDouble(),p_insolation.toDouble(),estateId)
 
+                    val documentReference = dryingCollection.add(drying).await()
+                    println("Document created with ID: ${documentReference.id}")
+                } catch (e: Exception) {
+                    // Manejar errores si es necesario
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
+    private fun backDrying(){
+        val estateId = arguments?.getString("estateId")
+        Log.d("DashboardInfoFragment", "Received estateId: $estateId")
+
+        binding.botonBack.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("estateId", estateId)
+            Navigation.findNavController(requireView()).navigate(R.id.dryingListFragment,bundle)
+        }
+    }
     private fun initViews() {
         d_year = binding.etDYear.text.toString()
         d_val_maq = binding.etDValMaq.text.toString()

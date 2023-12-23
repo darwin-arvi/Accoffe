@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fup.accoffe.R
 import com.fup.accoffe.adapters.EstateListAdapter
@@ -415,6 +416,7 @@ class PlantationFragment : Fragment() {
         val root: View = binding.root
         initViews()
         savePlantation()
+        backPlantation()
         return root
     }
     private fun savePlantation(){
@@ -443,6 +445,16 @@ class PlantationFragment : Fragment() {
         }
     }
 }
+    private fun backPlantation(){
+        val estateId = arguments?.getString("estateId")
+        Log.d("DashboardInfoFragment", "Received estateId: $estateId")
+
+        binding.botonBack.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("estateId", estateId)
+            Navigation.findNavController(requireView()).navigate(R.id.plantationListFragment,bundle)
+        }
+    }
 
     private fun initViews() {
         p_year= binding.etPYear.text.toString()

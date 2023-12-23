@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fup.accoffe.R
 import com.fup.accoffe.adapters.EstateListAdapter
@@ -17,7 +18,9 @@ import com.fup.accoffe.models.EstateDataModel
 import com.fup.accoffe.models.EstateInfoModel
 import com.fup.accoffe.models.EstateModel
 import com.fup.accoffe.models.HarvestModel
+import com.fup.accoffe.models.PreProcessingModel
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -133,8 +136,6 @@ class HarvestFragment : Fragment() {
 
             this.estateInfoModel.anio_analizado_c1 = anio_analizado_c1
 
-        //binding.respuestaobjeto.text=estateInfoModel.toString()
-        Log.d("TAG", "logic: "+estateInfoModel.toString())
     }
 
 
@@ -146,7 +147,39 @@ class HarvestFragment : Fragment() {
         _binding = FragmentHarvestBinding.inflate(inflater, container, false)
         val root: View = binding.root
         initViews()
+        saveHarvest()
+        backHarvest()
         return root
+    }
+
+    private fun saveHarvest(){
+        binding.botonSave.setOnClickListener {
+            val harvestCollection = db.collection("harvest")
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    initViews()
+                    val estateId = arguments?.getString("estateId")
+                    val harvest = HarvestModel("",h_year,h_maq_man,h_combustible,h_transport,l_Pjornal_recole, estateId)
+
+                    val documentReference = harvestCollection.add(harvest).await()
+                    println("Document created with ID: ${documentReference.id}")
+
+                } catch (e: Exception) {
+                    // Manejar errores si es necesario
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
+    private fun backHarvest(){
+        val estateId = arguments?.getString("estateId")
+        Log.d("DashboardInfoFragment", "Received estateId: $estateId")
+
+        binding.botonBack.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("estateId", estateId)
+            Navigation.findNavController(requireView()).navigate(R.id.harvestListFragment,bundle)
+        }
     }
 
     private fun initViews() {

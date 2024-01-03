@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fup.accoffe.R
@@ -16,6 +17,7 @@ import com.fup.accoffe.databinding.FragmentPlantationBinding
 import com.fup.accoffe.databinding.FragmentPlantationListBinding
 import com.fup.accoffe.models.PlantationModel
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -47,6 +49,8 @@ class PlantationListFragment : Fragment() {
         backPlantation()
         return root
     }
+
+
     private fun backPlantation(){
         val estateId = arguments?.getString("estateId")
         Log.d("DashboardInfoFragment", "Received estateId: $estateId")
@@ -91,7 +95,25 @@ class PlantationListFragment : Fragment() {
 
                 // Now you can use dataList, which contains all documents in the collection
                 activity?.runOnUiThread {
-                    val adapter = PlantationListAdapter(dataList)
+                    val adapter = PlantationListAdapter(dataList, onClickDelete = {
+
+                        db.collection(collectionName).document(it).delete()
+                            .addOnSuccessListener {
+                                Toast.makeText(context, "Eliminado Correctamente", Toast.LENGTH_SHORT).show()
+                                fetchAllDataFromFirestore(collectionName)
+                            }
+                            .addOnFailureListener { e ->
+                                Toast.makeText(context, "Error al Eliminar", Toast.LENGTH_SHORT).show()
+
+                            }
+
+                    },
+                        onClickEdit = {
+                        val bundle = Bundle()
+                        bundle.putString("plantationid", it)
+                        Navigation.findNavController(requireView()).navigate(R.id.nav_plantation,bundle)
+
+                    })
                     binding.rvPlantation.layoutManager = LinearLayoutManager(context)
                     binding.rvPlantation.adapter = adapter
                 }

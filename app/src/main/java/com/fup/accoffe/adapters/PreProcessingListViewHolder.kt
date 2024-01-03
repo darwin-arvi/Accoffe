@@ -8,8 +8,20 @@ import com.fup.accoffe.models.PreProcessingModel
 class PreProcessingListViewHolder (view: View): RecyclerView.ViewHolder(view) {
     private val binding= ItemPreProcessingListBinding.bind(view)
 
-    fun render(PreProcessingModel: PreProcessingModel){
+    fun render(PreProcessingModel: PreProcessingModel,onClickEdit:(String)->Unit,onClickDelete:(String)->Unit){
         binding.PreProcessingId.text= PreProcessingModel.id
         binding.PreProcessingYear.text=PreProcessingModel.b_year
+
+        binding.btnDeletePreProcessing.setOnClickListener {
+            if (PreProcessingModel.id != null) {
+                onClickDelete.invoke(PreProcessingModel.id)
+            }
+        }
+        binding.btnEditPreProcessing.setOnClickListener {
+            if (PreProcessingModel.id  !=null){
+                onClickEdit.invoke(PreProcessingModel.id)
+            }
+        }
+
     }
 }

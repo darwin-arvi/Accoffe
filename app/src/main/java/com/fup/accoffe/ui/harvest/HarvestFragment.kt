@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fup.accoffe.R
@@ -72,18 +73,18 @@ class HarvestFragment : Fragment() {
         }
     }
 
-    private fun getState(){
+    private fun getState() {
         this.estateInfoModel.transformidad_f17 = transformidad_f17
         this.estateInfoModel.transformidad_f18 = transformidad_f18
         this.estateInfoModel.transformidad_f19 = transformidad_f19
         this.estateInfoModel.transformidad_c20 = transformidad_c20
 
         this.estateInfoModel.anio_analizado_c1 = anio_analizado_c1
-        Log.d("TAG", "getState: esta funcionado claro que si!!"+estateInfoModel.transformidad)
+        Log.d("harvestResults", "getState: esta funcionado claro que si!!" + estateInfoModel.anio_analizado_c1)
     }
 
-    private fun obtainData(){
-        val estateRef = db.collection("harvest").document("PEu72eZfCHdFi1LUKWDB")
+    private fun obtainData() {
+        val estateRef = db.collection("harvest").document("wnt3M5dQdDsit2ctRM1f")
 
         estateRef.get()
             .addOnSuccessListener { documentSnapshot ->
@@ -91,9 +92,9 @@ class HarvestFragment : Fragment() {
                     // Document exists, you can access the data
                     val data = documentSnapshot.data
 
-                    val info= documentSnapshot.toObject(estateDataModel::class.java)
+                    val info = documentSnapshot.toObject(estateDataModel::class.java)
                     if (info != null) {
-                        estateDataModel=info
+                        estateDataModel = info
                     }
                     logic()
 
@@ -107,35 +108,35 @@ class HarvestFragment : Fragment() {
             }
     }
 
-    private fun logic(){
+    private fun logic() {
 
-            ///operaciones
-            //COSECHA F17
-            val emergia_p_f17 = estateDataModel.h_maq_man!! * transformidad_f17
-            //COSECHA F18
-            var anio_analizado_c1 = estateDataModel.h_combustible!! * 39500000
-            val emergia_p_f18 = anio_analizado_c1 * transformidad_f18
-            //COSECHA F19
-            val emergia_p_f19 = estateDataModel.h_transport!! * transformidad_f19
-            //COSECHA F20
-            val emergia_p_f20 = estateDataModel.l_Pjornal_recole!! * transformidad_c20
-            //TOTAL COSECHA
-            var total_c = emergia_p_f17 + emergia_p_f18 + emergia_p_f19 + emergia_p_f20
+        ///operaciones
+        //COSECHA F17
+        val emergia_p_f17 = estateDataModel.h_maq_man!! * transformidad_f17
+        //COSECHA F18
+        var anio_analizado_c1 = estateDataModel.h_combustible!! * 39500000
+        val emergia_p_f18 = anio_analizado_c1 * transformidad_f18
+        //COSECHA F19
+        val emergia_p_f19 = estateDataModel.h_transport!! * transformidad_f19
+        //COSECHA F20
+        val emergia_p_f20 = estateDataModel.l_Pjornal_recole!! * transformidad_c20
+        //TOTAL COSECHA
+        var total_c = emergia_p_f17 + emergia_p_f18 + emergia_p_f19 + emergia_p_f20
 
-            this.estateInfoModel.total_c = total_c
+        this.estateInfoModel.total_c = total_c
 
-            this.energyModel.emergia_p_f17 = emergia_p_f17
-            this.energyModel.emergia_p_f18 = emergia_p_f18
-            this.energyModel.emergia_p_f19 = emergia_p_f19
-            this.energyModel.emergia_p_f20 = emergia_p_f20
+        this.energyModel.emergia_p_f17 = emergia_p_f17
+        this.energyModel.emergia_p_f18 = emergia_p_f18
+        this.energyModel.emergia_p_f19 = emergia_p_f19
+        this.energyModel.emergia_p_f20 = emergia_p_f20
 
-            this.estateInfoModel.transformidad_f17 = transformidad_f17
-            this.estateInfoModel.transformidad_f18 = transformidad_f18
-            this.estateInfoModel.transformidad_f19 = transformidad_f19
-            this.estateInfoModel.transformidad_c20 = transformidad_c20
+        this.estateInfoModel.transformidad_f17 = transformidad_f17
+        this.estateInfoModel.transformidad_f18 = transformidad_f18
+        this.estateInfoModel.transformidad_f19 = transformidad_f19
+        this.estateInfoModel.transformidad_c20 = transformidad_c20
 
-            this.estateInfoModel.anio_analizado_c1 = anio_analizado_c1
-
+        this.estateInfoModel.anio_analizado_c1 = anio_analizado_c1
+        Log.d("harvestable", "datos solicitados: ${estateInfoModel.transformidad_f17} ${estateDataModel.h_maq_man} ${energyModel.emergia_p_f17}")
     }
 
 
@@ -147,23 +148,81 @@ class HarvestFragment : Fragment() {
         _binding = FragmentHarvestBinding.inflate(inflater, container, false)
         val root: View = binding.root
         initViews()
-        saveHarvest()
+        editHarvest()
         backHarvest()
         return root
     }
 
-    private fun saveHarvest(){
+    private fun editHarvest() {
+        val harvestId = arguments?.getString("harvestid")
+
+        if (harvestId != null) {
+            binding.botonSave.text = "Update"
+            db.collection("harvest").document(harvestId).get().addOnSuccessListener {
+               // Toast.makeText(context, "Eliminado Correctamente", Toast.LENGTH_SHORT).show()
+                Log.d("TAG-traerdatos", "editHarvest: "+ it)
+                binding.etHYear.setText(it.get("h_year").toString())
+                binding.etHMaqMan.setText(it.get("h_maq_man").toString())
+                binding.etHCombustible.setText(it.get("h_combustible").toString())
+                binding.etHTransport.setText(it.get("h_transport").toString())
+                binding.etLPjornalRecole.setText(it.get("l_Pjornal_recole").toString())
+            }
+                .addOnFailureListener { e ->
+
+                }
+            binding.botonSave.setOnClickListener {
+                initViews()
+                val datosActualizados = hashMapOf(
+                    "h_year" to h_year,
+                    "h_maq_man" to h_maq_man.toDouble(),
+                    "h_combustible" to h_combustible.toDouble(),
+                    "h_transport" to h_transport.toDouble(),
+                    "l_Pjornal_recole" to l_Pjornal_recole.toDouble()
+
+                )
+                val datosActualizadosMap: Map<String, Any> = datosActualizados
+                db.collection("harvest").document(harvestId).update(datosActualizadosMap).addOnSuccessListener {
+                    Toast.makeText(context, "Actualizado Correctamente", Toast.LENGTH_SHORT).show()
+                    requireActivity().runOnUiThread {
+                        Navigation.findNavController(requireView()).popBackStack()
+                        //val bundle = Bundle()
+                        //bundle.putString("estateId", arguments?.getString("estateId"))
+                        //Navigation.findNavController(requireView()).navigate(R.id.harvestListFragment,bundle)
+                    }
+                }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(context, "Error al actualizar", Toast.LENGTH_SHORT).show()
+
+                    }
+            }
+
+        }else{
+            saveHarvest()
+        }
+    }
+
+    private fun saveHarvest() {
         binding.botonSave.setOnClickListener {
             val harvestCollection = db.collection("harvest")
             CoroutineScope(Dispatchers.IO).launch {
                 try {
                     initViews()
                     val estateId = arguments?.getString("estateId")
-                    val harvest = HarvestModel("",h_year,h_maq_man,h_combustible,h_transport,l_Pjornal_recole, estateId)
+                    val harvest = HarvestModel(
+                        "",
+                        h_year,
+                        h_maq_man.toDouble(),
+                        h_combustible.toDouble(),
+                        h_transport.toDouble(),
+                        l_Pjornal_recole.toDouble(),
+                        estateId
+                    )
 
                     val documentReference = harvestCollection.add(harvest).await()
                     println("Document created with ID: ${documentReference.id}")
-
+                    requireActivity().runOnUiThread {
+                        Navigation.findNavController(requireView()).popBackStack()
+                    }
                 } catch (e: Exception) {
                     // Manejar errores si es necesario
                     e.printStackTrace()
@@ -171,22 +230,25 @@ class HarvestFragment : Fragment() {
             }
         }
     }
-    private fun backHarvest(){
+
+    private fun backHarvest() {
         val estateId = arguments?.getString("estateId")
         Log.d("DashboardInfoFragment", "Received estateId: $estateId")
 
         binding.botonBack.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putString("estateId", estateId)
-            Navigation.findNavController(requireView()).navigate(R.id.harvestListFragment,bundle)
+            //val bundle = Bundle()
+            //bundle.putString("estateId", estateId)
+            //Navigation.findNavController(requireView()).navigate(R.id.harvestListFragment, bundle)
+            Navigation.findNavController(requireView()).popBackStack()
+
         }
     }
 
     private fun initViews() {
         h_year = binding.etHYear.text.toString()
-        h_maq_man= binding.etHMaqMan.text.toString()
-        h_combustible= binding.etHCombustible.text.toString()
-        h_transport= binding.etHTransport.text.toString()
+        h_maq_man = binding.etHMaqMan.text.toString()
+        h_combustible = binding.etHCombustible.text.toString()
+        h_transport = binding.etHTransport.text.toString()
         l_Pjornal_recole = binding.etLPjornalRecole.text.toString()
     }
 

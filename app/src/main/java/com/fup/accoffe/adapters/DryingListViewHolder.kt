@@ -8,8 +8,19 @@ import com.fup.accoffe.models.DryingModel
 class DryingListViewHolder (view: View): RecyclerView.ViewHolder(view) {
     private val binding= ItemDryingListBinding.bind(view)
 
-    fun render(DryingModel: DryingModel){
+    fun render(DryingModel: DryingModel,onClickDelete:(String)->Unit,onClickEdit:(String)->Unit){
         binding.dryingId.text=DryingModel.id
         binding.dryingYear.text= DryingModel.d_year
+
+        binding.btnDeleteDrying.setOnClickListener {
+            if (DryingModel.id  !=null){
+                onClickDelete.invoke(DryingModel.id)
+            }
+        }
+        binding.btnEditdrying.setOnClickListener {
+            if (DryingModel.id  !=null){
+                onClickEdit.invoke(DryingModel.id)
+            }
+        }
     }
 }

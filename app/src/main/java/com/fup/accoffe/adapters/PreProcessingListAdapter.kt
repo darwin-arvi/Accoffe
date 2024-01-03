@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fup.accoffe.R
 import com.fup.accoffe.models.PreProcessingModel
 
-class PreProcessingListAdapter (private val preprocessinglist:MutableList<PreProcessingModel>): RecyclerView.Adapter<PreProcessingListViewHolder>() {
+class PreProcessingListAdapter (private val preprocessinglist:MutableList<PreProcessingModel>,private val onClickEdit:(String)->Unit,private val onClickDelete:(String)->Unit): RecyclerView.Adapter<PreProcessingListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PreProcessingListViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return PreProcessingListViewHolder(layoutInflater.inflate(R.layout.item_pre_processing_list, parent, false))
@@ -16,6 +16,6 @@ class PreProcessingListAdapter (private val preprocessinglist:MutableList<PrePro
 
     override fun onBindViewHolder(holder: PreProcessingListViewHolder, position: Int) {
         val item = preprocessinglist[position]
-        holder.render(item)
+        holder.render(item, onClickEdit,onClickDelete)
     }
 }

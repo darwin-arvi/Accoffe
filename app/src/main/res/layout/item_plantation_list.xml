@@ -14,31 +14,32 @@
         android:layout_height="130dp">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnEditPlantation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="152dp"
             android:text="Edit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.241"
-            app:layout_constraintStart_toEndOf="@+id/button3"
+            app:layout_constraintHorizontal_bias="0.96"
+            app:layout_constraintStart_toEndOf="@+id/btnPlantationInfo"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnDeletePlantation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Delete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toEndOf="@+id/button"
+            app:layout_constraintStart_toEndOf="@+id/btnEditPlantation"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnPlantationInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Info"
@@ -67,7 +68,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="36dp"
-
             android:text="17-04-2023"
             android:textColor="@color/black"
             android:textSize="18sp"

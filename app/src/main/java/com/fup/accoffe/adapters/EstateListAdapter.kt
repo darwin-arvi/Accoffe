@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fup.accoffe.R
 import com.fup.accoffe.models.EstateModel
 
-class EstateListAdapter(private val estatelist:MutableList<EstateModel>,private val onClickInfo:(String)->Unit):RecyclerView.Adapter<EstateListViewHolder>() {
+class EstateListAdapter(private val estatelist:MutableList<EstateModel>,private val onClickDelete:(String)->Unit,private val onClickInfo:(String)->Unit,private val onClickEdit:(String)->Unit):RecyclerView.Adapter<EstateListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EstateListViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return EstateListViewHolder(layoutInflater.inflate(R.layout.item_estate_list, parent, false))
@@ -16,7 +16,7 @@ class EstateListAdapter(private val estatelist:MutableList<EstateModel>,private 
 
     override fun onBindViewHolder(holder: EstateListViewHolder, position: Int) {
         val item = estatelist[position]
-        holder.render(item,onClickInfo)
+        holder.render(item,onClickDelete,onClickInfo, onClickEdit)
     }
 
 }

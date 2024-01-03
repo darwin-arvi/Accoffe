@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fup.accoffe.R
@@ -415,9 +416,99 @@ class PlantationFragment : Fragment() {
         _binding = FragmentPlantationBinding.inflate(inflater, container, false)
         val root: View = binding.root
         initViews()
-        savePlantation()
+        editPlantation()
         backPlantation()
         return root
+    }
+    private fun editPlantation() {
+        val PlantationId = arguments?.getString("plantationid")
+
+        if (PlantationId != null) {
+            binding.botonSave.text = "Update"
+            db.collection("planting").document(PlantationId).get().addOnSuccessListener {
+                // Toast.makeText(context, "Eliminado Correctamente", Toast.LENGTH_SHORT).show()
+                Log.d("TAG-traerdatos", "editHarvest: "+ it)
+                binding.etPYear.setText(it.get("p_year").toString())
+                binding.etPVelViento.setText(it.get("p_vel_viento").toString())
+                binding.etPAspecHidrico.setText(it.get("p_aspec_hidrico").toString())
+                binding.etPPerdidaSuelo.setText(it.get("p_perdida_suelo").toString())
+                binding.etPUrea.setText(it.get("p_urea").toString())
+                binding.etPAlbedo.setText(it.get("p_albedo").toString())
+                binding.etPDuracionCult.setText(it.get("p_duracion_cult").toString())
+                binding.etPAgua.setText(it.get("p_agua").toString())
+                binding.etPContMateriaOrga.setText(it.get("p_cont_materia_orga").toString())
+                binding.etPCal.setText(it.get("p_cal").toString())
+                binding.etPPestFung.setText(it.get("p_pest_fung").toString())
+                binding.etPPromedioInso.setText(it.get("p_promedio_inso").toString())
+                binding.etPEvaporacionPoten.setText(it.get("p_evaporacion_poten").toString())
+                binding.etPPromedioAltura.setText(it.get("p_promedio_altura").toString())
+                binding.etPFertiNitro.setText(it.get("p_ferti_nitro").toString())
+                binding.etPMateriaOrga.setText(it.get("p_materia_orga").toString())
+                binding.etLSiembraMante.setText(it.get("l_siembra_mante").toString())
+                binding.etPCapaAdmos.setText(it.get("p_capa_admos").toString())
+                binding.etPCoefiCult.setText(it.get("p_coefi_cult").toString())
+                binding.etPDensidad.setText(it.get("p_densidad").toString())
+                binding.etPFertiFosfato.setText(it.get("p_ferti_fosfato").toString())
+                binding.etPSemillas.setText(it.get("p_semillas").toString())
+                binding.etAreaFinca.setText(it.get("area_finca").toString())
+                binding.etPDensidadAire.setText(it.get("p_densidad_aire").toString())
+                binding.etPEnergiaLibreGibbs.setText(it.get("p_energia_libre_gibbs").toString())
+                binding.etPTranspiracion.setText(it.get("p_transpiracion").toString())
+                binding.etPFertiPotacio.setText(it.get("p_ferti_potacio").toString())
+                binding.etPMaqMan.setText(it.get("p_maq_man").toString())
+            }
+                .addOnFailureListener { e ->
+
+                }
+            binding.botonSave.setOnClickListener {
+                initViews()
+                val datosActualizados = hashMapOf(
+                    "p_year" to p_year,
+                    "p_vel_viento" to p_vel_viento,
+                    "p_aspec_hidrico" to p_aspec_hidrico,
+                    "p_perdida_suelo" to p_perdida_suelo,
+                    "p_urea" to p_urea,
+                    "p_albedo" to p_albedo,
+                    "p_duracion_cult" to p_duracion_cult,
+                    "p_agua" to p_agua,
+                    "p_cont_materia_orga" to p_cont_materia_orga,
+                    "p_cal" to p_cal,
+                    "p_pest_fung" to p_pest_fung,
+                    "p_promedio_inso" to p_promedio_inso,
+                    "p_evaporacion_poten" to p_evaporacion_poten,
+                    "p_promedio_altura" to p_promedio_altura,
+                    "p_ferti_nitro" to p_ferti_nitro,
+                    "p_materia_orga" to p_materia_orga,
+                    "l_siembra_mante" to l_siembra_mante,
+                    "p_capa_admos" to p_capa_admos,
+                    "p_coefi_cult" to p_coefi_cult,
+                    "p_densidad" to p_densidad,
+                    "p_ferti_fosfato" to p_ferti_fosfato,
+                    "p_semillas" to p_semillas,
+                    "area_finca" to area_finca,
+                    "p_densidad_aire" to p_densidad_aire,
+                    "l_p_energia_libre_gibbs" to p_energia_libre_gibbs,
+                    "p_transpiracion" to p_transpiracion,
+                    "p_ferti_potacio" to p_ferti_potacio,
+                    "p_maq_man" to p_maq_man
+
+                )
+                val datosActualizadosMap: Map<String, Any> = datosActualizados
+                db.collection("planting").document(PlantationId).update(datosActualizadosMap).addOnSuccessListener {
+                    Toast.makeText(context, "Actualizado Correctamente", Toast.LENGTH_SHORT).show()
+                    requireActivity().runOnUiThread {
+                        Navigation.findNavController(requireView()).popBackStack()
+                    }
+                }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(context, "Error al actualizar", Toast.LENGTH_SHORT).show()
+
+                    }
+            }
+
+        }else{
+            savePlantation()
+        }
     }
     private fun savePlantation(){
     binding.botonSave.setOnClickListener {
@@ -438,6 +529,12 @@ class PlantationFragment : Fragment() {
 
                 val documentReference = plantingCollection.add(plantation).await()
                 println("Document created with ID: ${documentReference.id}")
+                requireActivity().runOnUiThread{
+                    Navigation.findNavController(requireView()).popBackStack()
+
+                }
+
+
             } catch (e: Exception) {
                 // Manejar errores si es necesario
                 e.printStackTrace()

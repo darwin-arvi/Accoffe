@@ -7,10 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fup.accoffe.R
 import com.fup.accoffe.adapters.HarvestListAdapter
+import com.fup.accoffe.adapters.PlantationListAdapter
 import com.fup.accoffe.adapters.PreProcessingListAdapter
 import com.fup.accoffe.databinding.FragmentDashboardBinding
 import com.fup.accoffe.databinding.FragmentPreProcessingBinding
@@ -87,7 +89,26 @@ class PreProcessingListFragment : Fragment() {
 
                 // Now you can use dataList, which contains all documents in the collection
                 activity?.runOnUiThread {
-                    val adapter = PreProcessingListAdapter(dataList)
+                    val adapter = PreProcessingListAdapter(dataList,
+                        onClickEdit = {
+                        val bundle = Bundle()
+                        bundle.putString("preProcessingid", it)
+                        Navigation.findNavController(requireView()).navigate(R.id.nav_pre_processing,bundle)
+
+                    },
+                        onClickDelete = {
+
+                        db.collection(collectionName).document(it).delete()
+                            .addOnSuccessListener {
+                                Toast.makeText(context, "Eliminado Correctamente", Toast.LENGTH_SHORT).show()
+                                fetchAllDataFromFirestore(collectionName)
+                            }
+                            .addOnFailureListener { e ->
+                                Toast.makeText(context, "Error al Eliminar", Toast.LENGTH_SHORT).show()
+
+                            }
+
+                    })
                     binding.rvPreProcessing.layoutManager = LinearLayoutManager(context)
                     binding.rvPreProcessing.adapter = adapter
 

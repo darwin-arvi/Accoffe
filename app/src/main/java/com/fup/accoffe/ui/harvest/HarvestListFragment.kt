@@ -7,10 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fup.accoffe.R
 import com.fup.accoffe.adapters.HarvestListAdapter
+import com.fup.accoffe.adapters.PlantationListAdapter
 import com.fup.accoffe.databinding.FragmentDashboardBinding
 import com.fup.accoffe.databinding.FragmentHarvestBinding
 import com.fup.accoffe.databinding.FragmentHarvestListBinding
@@ -73,9 +75,8 @@ class HarvestListFragment : Fragment() {
             try {
                 val estateId = arguments?.getString("estateId")
                 Log.d("DashboardInfoFragment", "Received estateId: $estateId")
-                val collection = db.collection(collectionName).whereEqualTo("estateId", estateId)
-                    .get()
-                    .await()
+
+                val collection = db.collection(collectionName).whereEqualTo("estateId", estateId).get().await()
 
                 val dataList = mutableListOf<HarvestModel>()
 
@@ -90,7 +91,30 @@ class HarvestListFragment : Fragment() {
 
                 // Now you can use dataList, which contains all documents in the collection
                 activity?.runOnUiThread {
-                    val adapter = HarvestListAdapter(dataList)
+                    val adapter = HarvestListAdapter(dataList, onClickInfo = {
+                        val bundle = Bundle()
+                        bundle.putString("harvestid", it)
+                        Navigation.findNavController(requireView()).navigate(R.id.navHarvestInfoFragment,bundle)
+                    },
+                        onClickEdit = {
+                            val bundle = Bundle()
+                            bundle.putString("harvestid", it)
+                            Navigation.findNavController(requireView()).navigate(R.id.nav_harvest,bundle)
+
+                    },
+                        onClickDelete = {
+
+                        db.collection(collectionName).document(it).delete()
+                            .addOnSuccessListener {
+                                Toast.makeText(context, "Eliminado Correctamente", Toast.LENGTH_SHORT).show()
+                                fetchAllDataFromFirestore(collectionName)
+                            }
+                            .addOnFailureListener { e ->
+                                Toast.makeText(context, "Error al Eliminar", Toast.LENGTH_SHORT).show()
+
+                            }
+
+                    })
                     binding.rvHarvest.layoutManager = LinearLayoutManager(context)
                     binding.rvHarvest.adapter = adapter
                 }

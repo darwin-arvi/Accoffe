@@ -62,4 +62,9 @@
         android:name="com.fup.accoffe.ui.harvest.HarvestListFragment"
         android:label="fragment_harvest_list"
         tools:layout="@layout/fragment_harvest_list" />
+    <fragment
+        android:id="@+id/navHarvestInfoFragment"
+        android:name="com.fup.accoffe.ui.harvest.HarvestInfoFragment"
+        android:label="fragment_harvest_info"
+        tools:layout="@layout/fragment_harvest_info" />
 </navigation>

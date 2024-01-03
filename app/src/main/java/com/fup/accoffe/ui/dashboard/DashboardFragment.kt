@@ -5,15 +5,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fup.accoffe.R
+import com.fup.accoffe.adapters.DryingListAdapter
 import com.fup.accoffe.adapters.EstateListAdapter
 import com.fup.accoffe.databinding.FragmentDashboardBinding
-import com.fup.accoffe.models.EstateDataModel
+import com.fup.accoffe.models.DryingModel
 import com.fup.accoffe.models.EstateModel
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
@@ -71,13 +71,29 @@ class DashboardFragment : Fragment() {
 
                 // Now you can use dataList, which contains all documents in the collection
                 activity?.runOnUiThread {
-                    val adapter = EstateListAdapter(dataList, onClickInfo = {
+                    val adapter = EstateListAdapter(dataList, onClickDelete = {
+
+                        db.collection(collectionName).document(it).delete()
+                            .addOnSuccessListener {
+                                Toast.makeText(context, "Eliminado Correctamente", Toast.LENGTH_SHORT).show()
+                                fetchAllDataFromFirestore(collectionName)
+                            }
+                            .addOnFailureListener { e ->
+                                Toast.makeText(context, "Error al Eliminar", Toast.LENGTH_SHORT).show()
+                            } },
+                        onClickInfo = {
                         Log.d("clickonnfoid", "este es el id de x: $it")
                         val bundle = Bundle()
                         bundle.putString("estateId", it)
                         Navigation.findNavController(requireView()).navigate(R.id.dashboardInfoFragment,bundle)
 
-                    })
+                    },
+                        onClickEdit = {
+                            val bundle = Bundle()
+                            bundle.putString("estateid", it)
+                            Navigation.findNavController(requireView()).navigate(R.id.nav_estate,bundle)
+                        })
+
                     binding.rvEstates.layoutManager = LinearLayoutManager(context)
                     binding.rvEstates.adapter = adapter
                 }

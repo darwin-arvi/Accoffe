@@ -8,8 +8,19 @@ import com.fup.accoffe.models.PlantationModel
 class PlantationListViewHolder (view: View): RecyclerView.ViewHolder(view) {
     private val binding= ItemPlantationListBinding.bind(view)
 
-    fun render(PlantationModel: PlantationModel){
-        binding.plantationId.text=PlantationModel.id
-        binding.plantationYear.text=PlantationModel.p_year
+    fun render(plantationModel: PlantationModel,onClickDelete:(String)->Unit,onClickEdit:(String)->Unit){
+        binding.plantationId.text=plantationModel.id
+        binding.plantationYear.text=plantationModel.p_year
+
+        binding.btnDeletePlantation.setOnClickListener {
+            if (plantationModel.id  !=null){
+                onClickDelete.invoke(plantationModel.id)
+            }
     }
-}
+        binding.btnEditPlantation.setOnClickListener {
+            if (plantationModel.id  !=null){
+                onClickEdit.invoke(plantationModel.id)
+            }
+        }
+
+}}

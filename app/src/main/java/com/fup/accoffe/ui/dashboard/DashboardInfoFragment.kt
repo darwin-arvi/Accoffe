@@ -7,10 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import com.fup.accoffe.R
 import com.fup.accoffe.databinding.FragmentDashboardInfoBinding
 import com.fup.accoffe.databinding.FragmentDryingListBinding
+import com.fup.accoffe.models.EstateModel
+import com.fup.accoffe.models.PlantationModel
 import com.google.firebase.firestore.FirebaseFirestore
 
 class DashboardInfoFragment : Fragment() {
@@ -29,12 +32,34 @@ class DashboardInfoFragment : Fragment() {
     ): View? {
         _binding = FragmentDashboardInfoBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+        getestatebyid()
         buttonfunctions()
         backDashbordInfo()
         return root
 
     }
+
+    private fun getestatebyid(){
+        val estateId = arguments?.getString("estateId")
+        if(estateId != null){
+            db.collection("estate").document(estateId).get()
+                .addOnSuccessListener { querySnapshot ->
+                    val yourData = querySnapshot.toObject(EstateModel::class.java)
+                    Log.d("informacion", "getestatebyid: "+ yourData)
+                    binding.tvname.text=yourData?.ename.toString()
+                    binding.tvyear.text=yourData?.eyear.toString()
+                    binding.tvtcrop.text=yourData?.etypecrop.toString()
+                    binding.tvparea.text=yourData?.eproductarea.toString()
+                    binding.tvtarea.text=yourData?.etotalarea.toString()
+                    binding.tvcalmendra.text=yourData?.econvertionalmendra.toString()
+                    binding.tvdolar.text=yourData?.edolar.toString()
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(context, "error", Toast.LENGTH_SHORT).show()
+                }
+        }
+    }
+
     private fun backDashbordInfo(){
         val estateId = arguments?.getString("estateId")
         Log.d("DashboardInfoFragment", "Received estateId: $estateId")

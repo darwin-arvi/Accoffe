@@ -4,11 +4,12 @@ import java.time.LocalDate
 
 data class EstateModel(
     val id:String?="",
-    val econvertionalmendra: Int?=0,
-    val edolar: Int?=0,
+    val econvertionalmendra: Double?=0.0,
+    val edolar: Double?=0.0,
     val ename: String?="",
-    val eproductarea: Int?=0,
-    val etotalarea: Int?=0,
+    val eproductarea: Double?=0.0,
+    val etotalarea: Double?=0.0,
     val etypecrop: String?="",
     val eyear: String?=""
-)
+) {
+}

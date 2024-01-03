@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fup.accoffe.R
@@ -230,13 +231,86 @@ class DryingFragment : Fragment() {
         _binding = FragmentDryingBinding.inflate(inflater, container, false)
         val root: View = binding.root
         initViews()
-        saveDrying()
+        editDrying()
         backDrying()
         return root
     }
+    private fun editDrying() {
+        val dryingId = arguments?.getString("dryingid")
 
+        if (dryingId != null) {
+            binding.btnsave.text = "Update"
+            db.collection("drying").document(dryingId).get().addOnSuccessListener {
+                // Toast.makeText(context, "Eliminado Correctamente", Toast.LENGTH_SHORT).show()
+                Log.d("TAG-traerdatos", "editHarvest: "+ it)
+                binding.etDYear.setText(it.get("d_year").toString())
+                binding.etDValMaq.setText(it.get("d_val_maq").toString())
+                binding.etPTranspiracion.setText(it.get("p_transpiracion").toString())
+                binding.etDGfBenef.setText(it.get("d_gf_Benef").toString())
+                binding.etDProduccion.setText(it.get("d_produccion").toString())
+                binding.etDCombustible.setText(it.get("d_combustible").toString())
+                binding.etPDensidad2.setText(it.get("p_densidad2").toString())
+                binding.etPInsolation.setText(it.get("p_insolation").toString())
+                binding.etDDiasSecado.setText(it.get("d_dias_secado").toString())
+                binding.etDValInfra.setText(it.get("d_val_infra").toString())
+                binding.etPEnegiaLib.setText(it.get("p_enegia_lib").toString())
+                binding.etPAdmosfra.setText(it.get("p_admosfra").toString())
+                binding.etDK.setText(it.get("d_k").toString())
+                binding.etDPromedioElectrico.setText(it.get("d_promedio_electrico").toString())
+                binding.etLPdolar.setText(it.get("l_Pdolar").toString())
+                binding.etPDensidadA.setText(it.get("p_densidadA").toString())
+                binding.etDPatioSecado.setText(it.get("d_patio_secado").toString())
+                binding.etAreaFinca.setText(it.get("area_finca").toString())
+                binding.etPAlbedo.setText(it.get("p_albedo").toString())
+                binding.etPViento.setText(it.get("p_viento").toString())
+            }
+                .addOnFailureListener { e ->
+
+                }
+            binding.btnsave.setOnClickListener {
+                initViews()
+                val datosActualizados = hashMapOf(
+                    "d_year" to d_year,
+                    "d_val_maq" to d_val_maq,
+                    "p_transpiracion" to p_transpiracion,
+                    "d_gf_Benef" to d_gf_Benef,
+                    "d_produccion" to d_produccion,
+                    "d_combustible" to d_combustible,
+                    "p_densidad2" to p_densidad2,
+                    "p_insolation" to p_insolation,
+                    "d_dias_secado" to d_dias_secado,
+                    "d_val_infra" to d_val_infra,
+                    "p_enegia_lib" to p_enegia_lib,
+                    "p_admosfra" to p_admosfra,
+                    "d_k" to d_k,
+                    "d_promedio_electrico" to d_promedio_electrico,
+                    "l_Pdolar" to l_Pdolar,
+                    "p_densidadA" to p_densidadA,
+                    "d_patio_secado" to d_patio_secado,
+                    "area_finca" to area_finca,
+                    "p_albedo" to p_albedo,
+                    "p_viento" to p_viento
+
+                )
+                val datosActualizadosMap: Map<String, Any> = datosActualizados
+                db.collection("drying").document(dryingId).update(datosActualizadosMap).addOnSuccessListener {
+                    Toast.makeText(context, "Actualizado Correctamente", Toast.LENGTH_SHORT).show()
+                    requireActivity().runOnUiThread {
+                        Navigation.findNavController(requireView()).popBackStack()
+                    }
+                }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(context, "Error al actualizar", Toast.LENGTH_SHORT).show()
+
+                    }
+            }
+
+        }else{
+            saveDrying()
+        }
+    }
     private fun saveDrying(){
-        binding.botonSave.setOnClickListener {
+        binding.btnsave.setOnClickListener {
             val dryingCollection = db.collection("drying")
             CoroutineScope(Dispatchers.IO).launch {
                 try {
@@ -249,6 +323,9 @@ class DryingFragment : Fragment() {
 
                     val documentReference = dryingCollection.add(drying).await()
                     println("Document created with ID: ${documentReference.id}")
+                    requireActivity().runOnUiThread {
+                        Navigation.findNavController(requireView()).popBackStack()
+                    }
                 } catch (e: Exception) {
                     // Manejar errores si es necesario
                     e.printStackTrace()
@@ -269,24 +346,24 @@ class DryingFragment : Fragment() {
     private fun initViews() {
         d_year = binding.etDYear.text.toString()
         d_val_maq = binding.etDValMaq.text.toString()
-        p_transpiracion = binding.etDYear.text.toString()
-        d_gf_Benef = binding.etDYear.text.toString()
-        d_produccion = binding.etDYear.text.toString()
-        d_combustible = binding.etDYear.text.toString()
-        p_densidad2 = binding.etDYear.text.toString()
-        p_insolation = binding.etDYear.text.toString()
-        d_dias_secado = binding.etDYear.text.toString()
-        d_val_infra = binding.etDYear.text.toString()
-        p_enegia_lib = binding.etDYear.text.toString()
-        p_admosfra = binding.etDYear.text.toString()
-        d_k = binding.etDYear.text.toString()
-        d_promedio_electrico = binding.etDYear.text.toString()
-        l_Pdolar = binding.etDYear.text.toString()
-        p_densidadA = binding.etDYear.text.toString()
-        d_patio_secado = binding.etDYear.text.toString()
-        area_finca = binding.etDYear.text.toString()
-        p_albedo = binding.etDYear.text.toString()
-        p_viento = binding.etDYear.text.toString()
+        p_transpiracion = binding.etPTranspiracion.text.toString()
+        d_gf_Benef = binding.etDGfBenef.text.toString()
+        d_produccion = binding.etDProduccion.text.toString()
+        d_combustible = binding.etDCombustible.text.toString()
+        p_densidad2 = binding.etPDensidad2.text.toString()
+        p_insolation = binding.etPInsolation.text.toString()
+        d_dias_secado = binding.etDDiasSecado.text.toString()
+        d_val_infra = binding.etDValInfra.text.toString()
+        p_enegia_lib = binding.etPEnegiaLib.text.toString()
+        p_admosfra = binding.etPAdmosfra.text.toString()
+        d_k = binding.etDK.text.toString()
+        d_promedio_electrico = binding.etDPromedioElectrico.text.toString()
+        l_Pdolar = binding.etLPdolar.text.toString()
+        p_densidadA = binding.etPDensidadA.text.toString()
+        d_patio_secado = binding.etDPatioSecado.text.toString()
+        area_finca = binding.etAreaFinca.text.toString()
+        p_albedo = binding.etPAlbedo.text.toString()
+        p_viento = binding.etPViento.text.toString()
     }
 
 }

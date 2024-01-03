@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fup.accoffe.R
@@ -156,12 +157,59 @@ class PreProcessingFragment : Fragment() {
         _binding = FragmentPreProcessingBinding.inflate(inflater, container, false)
         val root: View = binding.root
         initViews()
-        savePreProcessing()
+        editPreProcessing()
         backPreProcessing()
         return root
 
     }
+    private fun editPreProcessing() {
+        val preProcessingId = arguments?.getString("preProcessingid")
 
+        if (preProcessingId != null) {
+            binding.botonSave.text = "Update"
+            db.collection("beaten").document(preProcessingId).get().addOnSuccessListener {
+                // Toast.makeText(context, "Eliminado Correctamente", Toast.LENGTH_SHORT).show()
+                Log.d("TAG-traerdatos", "editPreProcessing: "+ it)
+                binding.etBYear.setText(it.get("b_year").toString())
+                binding.etBValMaq.setText(it.get("b_val_maq").toString())
+                binding.etBDolar.setText(it.get("b_dolar").toString())
+                binding.etBValInfra.setText(it.get("b_val_infra").toString())
+                binding.etBPromedElectrico.setText(it.get("b_promed_electrico").toString())
+                binding.etBNumCostales.setText(it.get("b_num_costales").toString())
+                binding.etBGfBenef.setText(it.get("b_gf_Benef").toString())
+            }
+                .addOnFailureListener { e ->
+
+                }
+            binding.botonSave.setOnClickListener {
+                initViews()
+                val datosActualizados = hashMapOf(
+                    "b_year" to b_year,
+                    "b_val_maq" to b_val_maq,
+                    "b_dolar" to b_dolar,
+                    "b_val_infra" to b_val_infra,
+                    "b_promed_electrico" to b_promed_electrico,
+                    "b_num_costales" to b_num_costales,
+                    "b_gf_Benef" to b_gf_Benef
+
+                )
+                val datosActualizadosMap: Map<String, Any> = datosActualizados
+                db.collection("beaten").document(preProcessingId).update(datosActualizadosMap).addOnSuccessListener {
+                    Toast.makeText(context, "Actualizado Correctamente", Toast.LENGTH_SHORT).show()
+                    requireActivity().runOnUiThread {
+                        Navigation.findNavController(requireView()).popBackStack()
+                    }
+                }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(context, "Error al actualizar", Toast.LENGTH_SHORT).show()
+
+                    }
+            }
+
+        }else{
+            savePreProcessing()
+        }
+    }
     private fun savePreProcessing(){
         binding.botonSave.setOnClickListener {
             val preProcessingCollection = db.collection("beaten")
@@ -174,6 +222,9 @@ class PreProcessingFragment : Fragment() {
 
                     val documentReference = preProcessingCollection.add(preProcessing).await()
                     println("Document created with ID: ${documentReference.id}")
+                    requireActivity().runOnUiThread {
+                        Navigation.findNavController(requireView()).popBackStack()
+                    }
                 } catch (e: Exception) {
                     // Manejar errores si es necesario
                     e.printStackTrace()

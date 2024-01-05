@@ -21,19 +21,21 @@
             android:text="Edit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:backgroundTint="@color/purple_700"
             app:layout_constraintHorizontal_bias="0.96"
             app:layout_constraintStart_toEndOf="@+id/btnPlantationInfo"
             app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="38dp"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/btnDeletePlantation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="38dp"
+            android:backgroundTint="@color/design_default_color_error"
             android:text="Delete"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
             app:layout_constraintStart_toEndOf="@+id/btnEditPlantation"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
@@ -43,6 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Info"
+            android:backgroundTint="@color/material_dynamic_primary60"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.052"

@@ -3,8 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_LoginFragment">
 
+    <fragment
+        android:id="@+id/nav_LoginFragment"
+        android:name="com.fup.accoffe.ui.auth.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/nav_home"
         android:name="com.fup.accoffe.ui.dashboard.DashboardFragment"
@@ -67,4 +72,27 @@
         android:name="com.fup.accoffe.ui.harvest.HarvestInfoFragment"
         android:label="fragment_harvest_info"
         tools:layout="@layout/fragment_harvest_info" />
+    <fragment
+        android:id="@+id/navDryingInfoFragment"
+        android:name="com.fup.accoffe.ui.drying.DryingInfoFragment"
+        android:label="fragment_drying_info"
+        tools:layout="@layout/fragment_drying_info" />
+    <fragment
+        android:id="@+id/navPlantationInfoFragment"
+        android:name="com.fup.accoffe.ui.plantation.PlantationInfoFragment"
+        android:label="fragment_plantation_info"
+        tools:layout="@layout/fragment_plantation_info" />
+    <fragment
+        android:id="@+id/navPreProcessingInfoFragment"
+        android:name="com.fup.accoffe.ui.pre_processing.PreProcessingInfoFragment"
+        android:label="fragment_pre_processing_info"
+        tools:layout="@layout/fragment_pre_processing_info" />
+    <fragment
+        android:id="@+id/nav_RegisterFragment"
+        android:name="com.fup.accoffe.ui.auth.RegisterFragment"
+        android:label="fragmet_register"
+        tools:layout="@layout/fragment_register" />
+
+
+
 </navigation>

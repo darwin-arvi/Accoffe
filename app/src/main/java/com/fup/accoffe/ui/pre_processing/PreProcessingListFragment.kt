@@ -90,12 +90,17 @@ class PreProcessingListFragment : Fragment() {
                 // Now you can use dataList, which contains all documents in the collection
                 activity?.runOnUiThread {
                     val adapter = PreProcessingListAdapter(dataList,
+
                         onClickEdit = {
                         val bundle = Bundle()
                         bundle.putString("preProcessingid", it)
                         Navigation.findNavController(requireView()).navigate(R.id.nav_pre_processing,bundle)
 
-                    },
+                    },onClickInfo = {
+                            val bundle = Bundle()
+                            bundle.putString("preProcessingid", it)
+                            Navigation.findNavController(requireView()).navigate(R.id.navPreProcessingInfoFragment,bundle)
+                        },
                         onClickDelete = {
 
                         db.collection(collectionName).document(it).delete()

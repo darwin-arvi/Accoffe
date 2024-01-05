@@ -95,7 +95,11 @@ class PlantationListFragment : Fragment() {
 
                 // Now you can use dataList, which contains all documents in the collection
                 activity?.runOnUiThread {
-                    val adapter = PlantationListAdapter(dataList, onClickDelete = {
+                    val adapter = PlantationListAdapter(dataList,onClickInfo = {
+                        val bundle = Bundle()
+                        bundle.putString("plantationid", it)
+                        Navigation.findNavController(requireView()).navigate(R.id.navPlantationInfoFragment,bundle)
+                    }, onClickDelete = {
 
                         db.collection(collectionName).document(it).delete()
                             .addOnSuccessListener {

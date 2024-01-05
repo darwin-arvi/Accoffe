@@ -111,6 +111,10 @@ class DryingListFragment : Fragment() {
 
                             }
 
+                    },onClickInfo = {
+                        val bundle = Bundle()
+                        bundle.putString("dryingid", it)
+                        Navigation.findNavController(requireView()).navigate(R.id.navDryingInfoFragment,bundle)
                     },
                         onClickEdit = {
                         val bundle = Bundle()

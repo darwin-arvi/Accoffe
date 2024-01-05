@@ -17,9 +17,10 @@
             android:id="@+id/btnEditHarvest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
+            android:layout_marginStart="38dp"
             android:layout_marginTop="96dp"
             android:text="Edit"
+            android:backgroundTint="@color/purple_700"
             app:layout_constraintStart_toEndOf="@+id/btninfo"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,9 +28,10 @@
             android:id="@+id/btnDeleteHarvest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
+            android:layout_marginStart="38dp"
             android:layout_marginTop="96dp"
             android:text="Delete"
+            android:backgroundTint="@color/design_default_color_error"
             app:layout_constraintStart_toEndOf="@+id/btnEditHarvest"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,9 +40,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="96dp"
+            android:backgroundTint="@color/material_dynamic_primary60"
             android:text="Info"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.052"
+            app:layout_constraintHorizontal_bias="0.127"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

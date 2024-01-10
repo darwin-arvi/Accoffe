@@ -1,18 +1,24 @@
 package com.fup.accoffe
 
+
+import android.content.Context
 import android.os.Bundle
 import android.view.Menu
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
 import com.fup.accoffe.databinding.ActivityMainBinding
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 
+private const val USER_PREFERENCES_NAME = "USER_PREFERENCES"
+
+private val Context.dataStore by preferencesDataStore(
+    name = USER_PREFERENCES_NAME
+)
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -41,8 +47,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.navHarvestInfoFragment,R.id.navDryingInfoFragment,R.id.navPlantationInfoFragment,R.id.navPreProcessingInfoFragment
             ), drawerLayout
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        //setupActionBarWithNavController(navController, appBarConfiguration)
+        //navView.setupWithNavController(navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

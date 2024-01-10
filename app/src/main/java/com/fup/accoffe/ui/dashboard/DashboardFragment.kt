@@ -1,11 +1,14 @@
 package com.fup.accoffe.ui.dashboard
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,11 +18,15 @@ import com.fup.accoffe.adapters.EstateListAdapter
 import com.fup.accoffe.databinding.FragmentDashboardBinding
 import com.fup.accoffe.models.DryingModel
 import com.fup.accoffe.models.EstateModel
+import com.fup.accoffe.ui.auth.dataStore
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+
+
 
 class DashboardFragment : Fragment() {
 
@@ -37,11 +44,16 @@ class DashboardFragment : Fragment() {
     ): View {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        getuid()
         fetchAllDataFromFirestore("estate")
         addNewEstate()
         return root
     }
+    private  fun getuid()=requireContext().dataStore.data.map{preferences->
 
+        //preferences[stringPreferencesKey("uid")]
+        Log.d("getuid", "valor_ "+preferences[stringPreferencesKey("uid")].orEmpty() )
+    }
     private fun addNewEstate(){
         val estateId = arguments?.getString("estateId")
         Log.d("DashboardInfoFragment", "Received estateId: $estateId")

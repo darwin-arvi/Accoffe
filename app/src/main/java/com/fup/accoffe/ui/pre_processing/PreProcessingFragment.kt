@@ -185,12 +185,12 @@ class PreProcessingFragment : Fragment() {
                 initViews()
                 val datosActualizados = hashMapOf(
                     "b_year" to b_year,
-                    "b_val_maq" to b_val_maq,
-                    "b_dolar" to b_dolar,
-                    "b_val_infra" to b_val_infra,
-                    "b_promed_electrico" to b_promed_electrico,
-                    "b_num_costales" to b_num_costales,
-                    "b_gf_Benef" to b_gf_Benef
+                    "b_val_maq" to b_val_maq.toDouble(),
+                    "b_dolar" to b_dolar.toDouble(),
+                    "b_val_infra" to b_val_infra.toDouble(),
+                    "b_promed_electrico" to b_promed_electrico.toDouble(),
+                    "b_num_costales" to b_num_costales.toDouble(),
+                    "b_gf_Benef" to b_gf_Benef.toDouble()
 
                 )
                 val datosActualizadosMap: Map<String, Any> = datosActualizados

@@ -92,6 +92,11 @@
         android:name="com.fup.accoffe.ui.auth.RegisterFragment"
         android:label="fragmet_register"
         tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/nav_Graphs"
+        android:name="com.fup.accoffe.ui.graphs.GraphsFragment"
+        android:label="fragmet_graphs"
+        tools:layout="@layout/fragment_graphs" />
 
 
 

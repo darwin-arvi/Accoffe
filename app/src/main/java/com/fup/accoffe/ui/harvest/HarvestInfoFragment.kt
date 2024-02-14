@@ -58,7 +58,7 @@ class HarvestInfoFragment : Fragment() {
             Navigation.findNavController(requireView()).popBackStack()
         }
     }
-    private fun getStateData(){
+    private fun getStateData() {
 
         val harvestId = arguments?.getString("harvestid")
         Log.d("getStateData", "Received estateId: $harvestId")
@@ -101,32 +101,32 @@ class HarvestInfoFragment : Fragment() {
                         this.energyModel.emergia_p_f19 = emergia_p_f19
                         this.energyModel.emergia_p_f20 = emergia_p_f20
 
-                        this.estateInfoModel.transformidad_f17 = transformidad_f17
-                        this.estateInfoModel.transformidad_f18 = transformidad_f18
-                        this.estateInfoModel.transformidad_f19 = transformidad_f19
-                        this.estateInfoModel.transformidad_c20 = transformidad_c20
-
-                        this.estateInfoModel.anio_analizado_c1 = anio_analizado_c1
-                        Log.d("harvestable", "datos solicitados: ${estateInfoModel.transformidad_f17} ${estateDataModel.h_maq_man} ${energyModel.emergia_p_f17}")
 
 
-                        binding.tvflujoanual.text=estateDataModel.h_maq_man.toString()
-                        binding.item13.text =estateInfoModel.transformidad_f17.toString()
-                        binding.item14.text =energyModel.emergia_p_f17.toString()
 
-                        binding.item22.text=estateInfoModel.anio_analizado_c1.toString()
-                        binding.item23.text =estateInfoModel.transformidad_f18.toString()
-                        binding.item24.text =energyModel.emergia_p_f18.toString()
+                        Log.d(
+                            "harvestable",
+                            "datos solicitados: ${estateInfoModel.transformidad_f17} ${estateDataModel.h_maq_man} ${energyModel.emergia_p_f17}"
+                        )
 
-                        binding.item32.text=estateInfoModel.h_transport.toString()
-                        binding.item33.text =estateInfoModel.transformidad_f19.toString()
-                        binding.item34.text =energyModel.emergia_p_f19.toString()
 
-                        binding.item42.text=estateInfoModel.l_Pjornal_recole.toString()
-                        binding.item43.text =estateInfoModel.transformidad_c20.toString()
-                        binding.item44.text =energyModel.emergia_p_f20.toString()
+                        binding.tvflujoanual.text = estateDataModel.h_maq_man.toString()
+                        binding.item13.text = estateInfoModel.transformidad_f17.toString()
+                        binding.item14.text = energyModel.emergia_p_f17.toString()
 
-                        binding.item51.text =estateInfoModel.total_c.toString()
+                        binding.item22.text = estateInfoModel.anio_analizado_c1.toString()
+                        binding.item23.text = estateInfoModel.transformidad_f18.toString()
+                        binding.item24.text = energyModel.emergia_p_f18.toString()
+
+                        binding.item32.text = estateDataModel.h_transport.toString()
+                        binding.item33.text = estateInfoModel.transformidad_f19.toString()
+                        binding.item34.text = energyModel.emergia_p_f19.toString()
+
+                        binding.item42.text = estateDataModel.l_Pjornal_recole.toString()
+                        binding.item43.text = estateInfoModel.transformidad_c20.toString()
+                        binding.item44.text = energyModel.emergia_p_f20.toString()
+
+                        binding.item51.text = estateInfoModel.total_c.toString()
 
                     }
 

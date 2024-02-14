@@ -271,25 +271,25 @@ class DryingFragment : Fragment() {
                 initViews()
                 val datosActualizados = hashMapOf(
                     "d_year" to d_year,
-                    "d_val_maq" to d_val_maq,
-                    "p_transpiracion" to p_transpiracion,
-                    "d_gf_Benef" to d_gf_Benef,
-                    "d_produccion" to d_produccion,
-                    "d_combustible" to d_combustible,
-                    "p_densidad2" to p_densidad2,
-                    "p_insolation" to p_insolation,
-                    "d_dias_secado" to d_dias_secado,
-                    "d_val_infra" to d_val_infra,
-                    "p_enegia_lib" to p_enegia_lib,
-                    "p_admosfra" to p_admosfra,
-                    "d_k" to d_k,
-                    "d_promedio_electrico" to d_promedio_electrico,
-                    "l_Pdolar" to l_Pdolar,
-                    "p_densidadA" to p_densidadA,
-                    "d_patio_secado" to d_patio_secado,
-                    "area_finca" to area_finca,
-                    "p_albedo" to p_albedo,
-                    "p_viento" to p_viento
+                    "d_val_maq" to d_val_maq.toDouble(),
+                    "p_transpiracion" to p_transpiracion.toDouble(),
+                    "d_gf_Benef" to d_gf_Benef.toDouble(),
+                    "d_produccion" to d_produccion.toDouble(),
+                    "d_combustible" to d_combustible.toDouble(),
+                    "p_densidad2" to p_densidad2.toDouble(),
+                    "p_insolation" to p_insolation.toDouble(),
+                    "d_dias_secado" to d_dias_secado.toDouble(),
+                    "d_val_infra" to d_val_infra.toDouble(),
+                    "p_enegia_lib" to p_enegia_lib.toDouble(),
+                    "p_admosfra" to p_admosfra.toDouble(),
+                    "d_k" to d_k.toDouble(),
+                    "d_promedio_electrico" to d_promedio_electrico.toDouble(),
+                    "l_Pdolar" to l_Pdolar.toDouble(),
+                    "p_densidadA" to p_densidadA.toDouble(),
+                    "d_patio_secado" to d_patio_secado.toDouble(),
+                    "area_finca" to area_finca.toDouble(),
+                    "p_albedo" to p_albedo.toDouble(),
+                    "p_viento" to p_viento.toDouble()
 
                 )
                 val datosActualizadosMap: Map<String, Any> = datosActualizados
@@ -319,7 +319,8 @@ class DryingFragment : Fragment() {
                     val drying = DryingModel("",d_year,d_produccion.toDouble(), d_dias_secado.toDouble(), d_k.toDouble(),
                         d_patio_secado.toDouble(),d_val_maq.toDouble(),d_gf_Benef.toDouble(),d_combustible.toDouble(),
                         d_val_infra.toDouble(),d_promedio_electrico.toDouble(),l_Pdolar.toDouble(),p_enegia_lib.toDouble(),
-                        p_densidad2.toDouble(),p_viento.toDouble(),p_admosfra.toDouble(),p_densidadA.toDouble(),p_insolation.toDouble(),estateId)
+                        p_densidad2.toDouble(),p_viento.toDouble(),p_admosfra.toDouble(),p_densidadA.toDouble(),p_insolation.toDouble(),
+                        p_albedo.toDouble(),p_transpiracion.toDouble(),area_finca.toDouble(),estateId)
 
                     val documentReference = dryingCollection.add(drying).await()
                     println("Document created with ID: ${documentReference.id}")

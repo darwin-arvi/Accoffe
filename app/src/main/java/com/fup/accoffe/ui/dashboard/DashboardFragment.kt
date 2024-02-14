@@ -1,6 +1,8 @@
 package com.fup.accoffe.ui.dashboard
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,24 +10,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fup.accoffe.R
-import com.fup.accoffe.adapters.DryingListAdapter
 import com.fup.accoffe.adapters.EstateListAdapter
+import com.fup.accoffe.dataStore
 import com.fup.accoffe.databinding.FragmentDashboardBinding
-import com.fup.accoffe.models.DryingModel
 import com.fup.accoffe.models.EstateModel
-import com.fup.accoffe.ui.auth.dataStore
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
-
 
 
 class DashboardFragment : Fragment() {
@@ -44,15 +43,30 @@ class DashboardFragment : Fragment() {
     ): View {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        getuid()
+        //getuid()
+        singOut()
+        lifecycleScope.launch(Dispatchers.IO) {
+            val uid = getUid(requireContext())
+            Log.d("UserData", "User UID: $uid")
+        }
+
         fetchAllDataFromFirestore("estate")
         addNewEstate()
         return root
     }
-    private  fun getuid()=requireContext().dataStore.data.map{preferences->
+    private fun singOut(){
 
-        //preferences[stringPreferencesKey("uid")]
-        Log.d("getuid", "valor_ "+preferences[stringPreferencesKey("uid")].orEmpty() )
+        binding.btnSingOut.setOnClickListener {
+            val bundle = Bundle()
+            Navigation.findNavController(requireView()).navigate(R.id.nav_LoginFragment,bundle)
+
+        }
+    }
+    suspend fun getUid(context: Context): String? {
+        val preferencesKey = stringPreferencesKey("uid")
+        val dataStore = context.dataStore
+        val preferences = dataStore.data.first()
+        return preferences[preferencesKey]
     }
     private fun addNewEstate(){
         val estateId = arguments?.getString("estateId")
@@ -64,10 +78,12 @@ class DashboardFragment : Fragment() {
             Navigation.findNavController(requireView()).navigate(R.id.nav_estate,bundle)
         }
     }
+
+
     private fun fetchAllDataFromFirestore(collectionName: String) {
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val collection = db.collection(collectionName).get().await()
+                val collection = db.collection(collectionName).whereEqualTo("userId",getUid(requireContext())).get().await()
 
 
                 val dataList = mutableListOf<EstateModel>()
@@ -85,6 +101,13 @@ class DashboardFragment : Fragment() {
                 activity?.runOnUiThread {
                     val adapter = EstateListAdapter(dataList, onClickDelete = {
 
+                        val builder = AlertDialog.Builder(requireContext())
+
+                        builder.setTitle("Confirmación")
+                        builder.setMessage("¿Estás seguro de que deseas borrar?")
+
+                        builder.setPositiveButton("Sí") { dialogInterface: DialogInterface, i: Int ->
+
                         db.collection(collectionName).document(it).delete()
                             .addOnSuccessListener {
                                 Toast.makeText(context, "Eliminado Correctamente", Toast.LENGTH_SHORT).show()
@@ -92,7 +115,16 @@ class DashboardFragment : Fragment() {
                             }
                             .addOnFailureListener { e ->
                                 Toast.makeText(context, "Error al Eliminar", Toast.LENGTH_SHORT).show()
-                            } },
+                            }
+                    }
+
+                            builder.setNegativeButton("No") { dialogInterface: DialogInterface, i: Int ->
+
+                    }
+
+                        val dialog = builder.create()
+                    dialog.show()
+                                        },
                         onClickInfo = {
                         Log.d("clickonnfoid", "este es el id de x: $it")
                         val bundle = Bundle()

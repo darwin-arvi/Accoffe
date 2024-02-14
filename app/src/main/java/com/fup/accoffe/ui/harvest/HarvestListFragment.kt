@@ -1,5 +1,7 @@
 package com.fup.accoffe.ui.harvest
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -104,6 +106,13 @@ class HarvestListFragment : Fragment() {
                     },
                         onClickDelete = {
 
+                            val builder = AlertDialog.Builder(requireContext())
+
+                            builder.setTitle("Confirmación")
+                            builder.setMessage("¿Estás seguro de que deseas borrar?")
+
+                            builder.setPositiveButton("Sí") { dialogInterface: DialogInterface, i: Int ->
+
                         db.collection(collectionName).document(it).delete()
                             .addOnSuccessListener {
                                 Toast.makeText(context, "Eliminado Correctamente", Toast.LENGTH_SHORT).show()
@@ -113,6 +122,14 @@ class HarvestListFragment : Fragment() {
                                 Toast.makeText(context, "Error al Eliminar", Toast.LENGTH_SHORT).show()
 
                             }
+                            }
+
+                            builder.setNegativeButton("No") { dialogInterface: DialogInterface, i: Int ->
+
+                            }
+
+                            val dialog = builder.create()
+                            dialog.show()
 
                     })
                     binding.rvHarvest.layoutManager = LinearLayoutManager(context)

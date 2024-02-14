@@ -5,6 +5,8 @@ import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -14,11 +16,9 @@ import com.fup.accoffe.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 
-private const val USER_PREFERENCES_NAME = "USER_PREFERENCES"
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "USER_PREFERENCES")
 
-private val Context.dataStore by preferencesDataStore(
-    name = USER_PREFERENCES_NAME
-)
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration

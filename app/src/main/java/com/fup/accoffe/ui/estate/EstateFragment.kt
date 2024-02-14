@@ -1,5 +1,6 @@
 package com.fup.accoffe.ui.estate
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,16 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.fup.accoffe.R
+import com.fup.accoffe.dataStore
 import com.fup.accoffe.databinding.FragmentEstateBinding
 import com.fup.accoffe.models.EstateModel
 import com.fup.accoffe.models.HarvestModel
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
@@ -57,6 +61,13 @@ class EstateFragment : Fragment() {
 
         _binding = null
     }
+    suspend fun getUid(context: Context): String? {
+        val preferencesKey = stringPreferencesKey("uid")
+        val dataStore = context.dataStore
+        val preferences = dataStore.data.first()
+        return preferences[preferencesKey]
+    }
+
     private fun editEstate() {
         val estateId = arguments?.getString("estateid")
 
@@ -75,16 +86,18 @@ class EstateFragment : Fragment() {
                 .addOnFailureListener { e ->
 
                 }
+
             binding.botonSave.setOnClickListener {
                 initViews()
                 val datosActualizados = hashMapOf(
                     "ename" to ename,
                     "eyear" to eyear,
-                    "eproductarea" to eproductarea,
-                    "etotalarea" to etotalarea,
-                    "econvertionalmendra" to econvertionalmendra,
-                    "etypecrop" to etypecrop,
-                    "edolar" to edolar
+                    "eproductarea" to eproductarea.toDouble(),
+                    "etotalarea" to etotalarea.toDouble(),
+                    "econvertionalmendra" to econvertionalmendra.toDouble(),
+                    "etypecrop" to etypecrop.toDouble(),
+                    "edolar" to edolar.toDouble()
+
 
                 )
                 val datosActualizadosMap: Map<String, Any> = datosActualizados
@@ -112,7 +125,7 @@ class EstateFragment : Fragment() {
                 try {
                     initViews()
                     val estate = EstateModel("",econvertionalmendra.toDouble(),edolar.toDouble(),ename.toString(),
-                        eproductarea.toDouble(),etotalarea.toDouble(),etypecrop.toString(),eyear.toString())
+                        eproductarea.toDouble(),etotalarea.toDouble(),etypecrop.toString(),eyear.toString(),getUid(requireContext()))
 
                     val documentReference = estateCollection.add(estate).await()
                     println("Document created with ID: ${documentReference.id}")

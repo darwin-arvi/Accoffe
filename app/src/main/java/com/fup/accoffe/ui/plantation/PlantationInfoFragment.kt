@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import com.fup.accoffe.R
 import com.fup.accoffe.databinding.FragmentDryingInfoBinding
@@ -95,6 +96,24 @@ class PlantationInfoFragment : Fragment() {
                     val info = documentSnapshot.toObject(EstateDataModel::class.java)
                     if (info != null) {
                         estateDataModel = info
+
+                        estateInfoModel.transformidad=transformidad
+                        estateInfoModel.transformidad_f2=transformidad_f2
+                        estateInfoModel.transformidad_f3=transformidad_f3
+                        estateInfoModel.transformidad_f4=transformidad_f4
+                        estateInfoModel.transformidad_f5=transformidad_f5
+                        estateInfoModel.transformidad_f6=transformidad_f6
+                        estateInfoModel.transformidad_f7=transformidad_f7
+                        estateInfoModel.transformidad_f8=transformidad_f8
+                        estateInfoModel.transformidad_f9=transformidad_f9
+                        estateInfoModel.transformidad_f10=transformidad_f10
+                        estateInfoModel.transformidad_f11=transformidad_f11
+                        estateInfoModel.transformidad_f12=transformidad_f12
+                        estateInfoModel.transformidad_f13=transformidad_f13
+                        estateInfoModel.transformidad_f14=transformidad_f14
+                        estateInfoModel.transformidad_f15=transformidad_f15
+                        estateInfoModel.transformidad_f16=transformidad_f16
+
 
                         estateInfoModel.p_year = estateDataModel.p_year
                         estateInfoModel.p_albedo = estateDataModel.p_albedo
@@ -417,6 +436,18 @@ class PlantationInfoFragment : Fragment() {
 
 
                         binding.item7771.text =estateInfoModel.total_p.toString()
+
+
+                        //logica para guardar sumatorias
+                        db.collection("sumatoriaone")
+                            .add(energyModel)
+                            .addOnSuccessListener { documentReference ->
+                                Toast.makeText(requireContext(), "Se guardaron los datos", Toast.LENGTH_SHORT).show()
+                            }
+                            .addOnFailureListener { e ->
+                                // Error al guardar
+                                println("Error al guardar el objeto: $e")
+                            }
 
                     }
 

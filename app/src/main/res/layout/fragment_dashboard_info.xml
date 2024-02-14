@@ -203,9 +203,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
 
-                    android:layout_height="204dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginHorizontal="1dp"
-                    android:layout_marginVertical="200dp"
+                    android:layout_marginVertical="20dp"
                     android:orientation="vertical"
 
                     tools:layout_editor_absoluteX="16dp">
@@ -237,6 +237,14 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="#4CAF50"
                         android:text="PRE-PROCESSING MANAGEMET"
+                        app:layout_constraintVertical_bias="0.963" />
+
+                    <Button
+                        android:id="@+id/btninfoGraphs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#4CAF50"
+                        android:text="GRAFICAS"
                         app:layout_constraintVertical_bias="0.963" />
 
                 </LinearLayout>

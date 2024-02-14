@@ -95,6 +95,11 @@ class DashboardInfoFragment : Fragment() {
             bundle.putString("estateId", estateId)
             Navigation.findNavController(requireView()).navigate(R.id.preProcessingListFragment,bundle)
         }
+        binding.btninfoGraphs.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("estateId", estateId)
+            Navigation.findNavController(requireView()).navigate(R.id.nav_Graphs,bundle)
+        }
 
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {

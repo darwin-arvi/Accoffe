@@ -1,5 +1,7 @@
 package com.fup.accoffe.ui.pre_processing
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -83,6 +85,7 @@ class PreProcessingListFragment : Fragment() {
                     if (yourData != null) {
                         val id = document.id
                         val modelo = yourData.copy(id = id)
+                        Log.d("llega", "Received estateId: $modelo")
                         dataList.add(modelo)
                     }
                 }
@@ -103,6 +106,13 @@ class PreProcessingListFragment : Fragment() {
                         },
                         onClickDelete = {
 
+                            val builder = AlertDialog.Builder(requireContext())
+
+                            builder.setTitle("Confirmación")
+                            builder.setMessage("¿Estás seguro de que deseas borrar?")
+
+                            builder.setPositiveButton("Sí") { dialogInterface: DialogInterface, i: Int ->
+
                         db.collection(collectionName).document(it).delete()
                             .addOnSuccessListener {
                                 Toast.makeText(context, "Eliminado Correctamente", Toast.LENGTH_SHORT).show()
@@ -112,8 +122,17 @@ class PreProcessingListFragment : Fragment() {
                                 Toast.makeText(context, "Error al Eliminar", Toast.LENGTH_SHORT).show()
 
                             }
+                        }
 
-                    })
+                                builder.setNegativeButton("No") { dialogInterface: DialogInterface, i: Int ->
+
+                        }
+
+                        val dialog = builder.create()
+                    dialog.show()
+
+
+                })
                     binding.rvPreProcessing.layoutManager = LinearLayoutManager(context)
                     binding.rvPreProcessing.adapter = adapter
 

@@ -114,6 +114,8 @@ class PreProcessingInfoFragment : Fragment() {
                         var t5 = (estateDataModel.b_num_costales!! * transformidad_t5);
                         this.estateInfoModel.t5 = t5;
 
+                        this.estateInfoModel.total=t1+t2+t3+t4+t5
+
                         this.estateInfoModel.b_num_costales = estateDataModel.b_num_costales
                         this.estateInfoModel.b_promed_electrico = estateDataModel.b_promed_electrico
                         this.estateInfoModel.b_gf_Benef = estateDataModel.b_gf_Benef

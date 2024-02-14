@@ -10,6 +10,7 @@ data class EstateModel(
     val eproductarea: Double?=0.0,
     val etotalarea: Double?=0.0,
     val etypecrop: String?="",
-    val eyear: String?=""
+    val eyear: String?="",
+    val userId:String?=""
 ) {
 }

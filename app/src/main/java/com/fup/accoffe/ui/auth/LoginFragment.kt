@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.datastore.dataStore
 import androidx.datastore.dataStoreFile
 import androidx.datastore.preferences.core.edit
@@ -16,6 +17,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.fup.accoffe.R
+import com.fup.accoffe.dataStore
 import com.fup.accoffe.databinding.FragmentLoginBinding
 import com.fup.accoffe.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -26,7 +28,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-val Context.dataStore by preferencesDataStore(name = "USER_PREFERENCES")
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
@@ -64,21 +65,31 @@ class LoginFragment : Fragment() {
         binding.btnEnter.setOnClickListener {
             val email=binding.txUsuario.text.toString()
             val password=binding.txPassword.text.toString()
-            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-                if (it.isSuccessful){
-                    Log.d("login", "signInWithEmail:success")
-                    lifecycleScope.launch(Dispatchers.IO) {
-                        savepref(auth.currentUser?.uid.toString())
-                        Log.d("emailAndPasswordLogin", "emailAndPasswordLogin: "+ auth.currentUser?.uid)
-                        activity?.runOnUiThread {
-                            Navigation.findNavController(requireView()).navigate(R.id.nav_home)
-                        }
-                    }
-                }else{
-                    Log.d("login", "signInWithEmail:Error")
-                }
-            }
 
+            if(email.isNotEmpty() && password.isNotEmpty()) {
+                binding.btnEnter.isEnabled=false
+                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        Log.d("login", "signInWithEmail:success")
+                        lifecycleScope.launch(Dispatchers.IO) {
+                            savepref(auth.currentUser?.uid.toString())
+                            Log.d(
+                                "emailAndPasswordLogin",
+                                "emailAndPasswordLogin: " + auth.currentUser?.uid
+                            )
+                            activity?.runOnUiThread {
+                                Navigation.findNavController(requireView()).navigate(R.id.nav_home)
+                            }
+                        }
+                    } else {
+                        binding.btnEnter.isEnabled=true
+                        Toast.makeText(requireContext(), "Error al Iniciar sesion", Toast.LENGTH_SHORT).show()
+                        Log.d("login", "signInWithEmail:Error")
+                    }
+                }
+            }else{
+                Toast.makeText(requireContext(), "Revisa los campos", Toast.LENGTH_SHORT).show()
+            }
 
         }
 

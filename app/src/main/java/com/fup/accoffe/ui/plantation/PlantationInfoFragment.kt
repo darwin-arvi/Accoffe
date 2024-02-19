@@ -432,25 +432,9 @@ class PlantationInfoFragment : Fragment() {
                         binding.item6664.text=estateInfoModel.total_f16.toString()
                         binding.item6665.text =estateInfoModel.transformidad_f16.toString()
                         binding.item6666.text =energyModel.emergia_p_f16.toString()
-
-
-
                         binding.item7771.text =estateInfoModel.total_p.toString()
 
-
-                        //logica para guardar sumatorias
-                        db.collection("sumatoriaone")
-                            .add(energyModel)
-                            .addOnSuccessListener { documentReference ->
-                                Toast.makeText(requireContext(), "Se guardaron los datos", Toast.LENGTH_SHORT).show()
-                            }
-                            .addOnFailureListener { e ->
-                                // Error al guardar
-                                println("Error al guardar el objeto: $e")
-                            }
-
                     }
-
 
                     Log.d("TAG", "Document data: ${estateDataModel}")
                 } else {

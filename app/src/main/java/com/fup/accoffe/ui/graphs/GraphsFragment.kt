@@ -1,5 +1,6 @@
 package com.fup.accoffe.ui.graphs
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +11,18 @@ import com.fup.accoffe.databinding.FragmentGraphsBinding
 import com.fup.accoffe.models.EnergyModel
 import com.fup.accoffe.models.EstateDataModel
 import com.fup.accoffe.models.EstateInfoModel
+import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.formatter.PercentFormatter
+import com.github.mikephil.charting.formatter.ValueFormatter
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
+import com.github.mikephil.charting.interfaces.datasets.IPieDataSet
 import com.google.firebase.firestore.FirebaseFirestore
 
 class GraphsFragment : Fragment() {
@@ -46,7 +59,10 @@ class GraphsFragment : Fragment() {
 
         energyModel = EnergyModel()
         //getalldata()
+
         getStateData()
+
+
 
 
 
@@ -765,88 +781,482 @@ class GraphsFragment : Fragment() {
                                                                                                                             val totalf =
                                                                                                                                 plantingsum + emergia_p_f6 + reno2 + noreno2
 
+                                                                                                                            val siwret =
+                                                                                                                                emergia_p_f1 + emergia_p_f2 + emergia_p_f3 + emergia_p_f4 + emergia_p_f5;
+                                                                                                                            val fertilizers =
+                                                                                                                                emergia_p_f7 + emergia_p_f8 + emergia_p_f9 + emergia_p_f10 + emergia_p_f11
+                                                                                                                            val organicFertilizer =
+                                                                                                                                emergia_p_f12
+                                                                                                                            val humanlabor =
+                                                                                                                                emergia_p_f15
+                                                                                                                            val machinaryandequipment =
+                                                                                                                                emergia_p_f14
+                                                                                                                            //harvest
+                                                                                                                            val machinaryandEquipmentH =
+                                                                                                                                emergia_p_f17
+                                                                                                                            val fuelandlubricants =
+                                                                                                                                emergia_p_f18
+                                                                                                                            val HTvehicle =
+                                                                                                                                emergia_p_f19
+                                                                                                                            val humanlaborH =
+                                                                                                                                emergia_p_f20
+                                                                                                                            //drying
+                                                                                                                            val siweD =
+                                                                                                                                emergia_s1 + emergia_s2 + emergia_s3
+                                                                                                                            val waterD =
+                                                                                                                                emergia_s4
+                                                                                                                            val machinaryandEquipmentD =
+                                                                                                                                emergia_s6
+                                                                                                                            val humanlaborD =
+                                                                                                                                emergia_s7
+                                                                                                                            val buildingsD =
+                                                                                                                                emergia_s9 + emergia_s5
+                                                                                                                            val electricityandfuelD =
+                                                                                                                                emergia_s30 + emergia_s8
+                                                                                                                            //preprocessing
+                                                                                                                            val machinaryandequipmentP =
+                                                                                                                                t1
+                                                                                                                            val humanlaborP =
+                                                                                                                                t2
+                                                                                                                            val buildingsP =
+                                                                                                                                t3
+                                                                                                                            val electricityP =
+                                                                                                                                t4
+
 
                                                                                                                             if (estateId != null) {
-                                                                                                                                db.collection("estate").document(estateId).get().addOnSuccessListener {document->
+                                                                                                                                db.collection(
+                                                                                                                                    "estate"
+                                                                                                                                )
+                                                                                                                                    .document(
+                                                                                                                                        estateId
+                                                                                                                                    )
+                                                                                                                                    .get()
+                                                                                                                                    .addOnSuccessListener { document ->
 
 
-                                                                                                                                    val factor_f = document.getDouble("econvertionalmendra")
-                                                                                                                                    val equiv1k = 24500000;
-                                                                                                                                    val s_prodCereza = 0.18;
-                                                                                                                                    val prodAlmendra = s_prodCereza * factor_f!!;
-
-                                                                                                                                    val flujoAnual = prodAlmendra * equiv1k;
-
-                                                                                                                                    val transf2018 = totalf / flujoAnual;
-
-                                                                                                                                    requireActivity().runOnUiThread {
-                                                                                                                                        binding.resul5.text =
-                                                                                                                                            String.format(
-                                                                                                                                                "%.2e",
-                                                                                                                                                transf2018
+                                                                                                                                        val factor_f =
+                                                                                                                                            document.getDouble(
+                                                                                                                                                "econvertionalmendra"
                                                                                                                                             )
+                                                                                                                                        val equiv1k =
+                                                                                                                                            24500000
+                                                                                                                                        val s_prodCereza =
+                                                                                                                                            0.18
+                                                                                                                                        val prodAlmendra =
+                                                                                                                                            s_prodCereza * factor_f!!
+
+                                                                                                                                        val flujoAnual =
+                                                                                                                                            prodAlmendra * equiv1k;
+
+                                                                                                                                        val transf2018 =
+                                                                                                                                            totalf / flujoAnual;
+
+                                                                                                                                        try{requireActivity().runOnUiThread {
+                                                                                                                                            binding.resul5.text =
+                                                                                                                                                String.format(
+                                                                                                                                                    "%.2e",
+                                                                                                                                                    transf2018
+                                                                                                                                                )
+                                                                                                                                        }}catch(e:Exception){
+                                                                                                                                            Log.d(
+                                                                                                                                                "errorrrr",
+                                                                                                                                                "getStateData: $e"
+                                                                                                                                            )
+                                                                                                                                        }
+
                                                                                                                                     }
+                                                                                                                            }
 
+                                                                                                                            val eyr =
+                                                                                                                                (totalf / (reno2 + noreno2));
+                                                                                                                            val elr =
+                                                                                                                                ((emergia_p_f6 + noreno2) / (plantingsum + reno2))
+                                                                                                                            val eir =
+                                                                                                                                ((reno2 + noreno2) / (emergia_p_f6 + plantingsum))
+                                                                                                                            val esi =
+                                                                                                                                (eyr / elr)
+
+
+
+                                                                                                                            try {
+                                                                                                                                requireActivity().runOnUiThread {
+                                                                                                                                    binding.renovables1.text =
+                                                                                                                                        String.format(
+                                                                                                                                            "%.2e",
+                                                                                                                                            plantingsum
+                                                                                                                                        )
+                                                                                                                                    binding.Rnorenovables.text =
+                                                                                                                                        String.format(
+                                                                                                                                            "%.2e",
+                                                                                                                                            emergia_p_f6
+                                                                                                                                        )
+                                                                                                                                    binding.reno2.text =
+                                                                                                                                        String.format(
+                                                                                                                                            "%.2e",
+                                                                                                                                            reno2
+                                                                                                                                        )
+                                                                                                                                    binding.noreno2.text =
+                                                                                                                                        String.format(
+                                                                                                                                            "%.2e",
+                                                                                                                                            noreno2
+                                                                                                                                        )
+                                                                                                                                    binding.totalf.text =
+                                                                                                                                        String.format(
+                                                                                                                                            "%.2e",
+                                                                                                                                            totalf
+                                                                                                                                        )
+                                                                                                                                    //transformidad
+                                                                                                                                    binding.resul1.text =
+                                                                                                                                        String.format(
+                                                                                                                                            "%.2e",
+                                                                                                                                            eyr
+                                                                                                                                        )
+                                                                                                                                    binding.resul2.text =
+                                                                                                                                        String.format(
+                                                                                                                                            "%.2e",
+                                                                                                                                            elr
+                                                                                                                                        )
+                                                                                                                                    binding.resul3.text =
+                                                                                                                                        String.format(
+                                                                                                                                            "%.2e",
+                                                                                                                                            eir
+                                                                                                                                        )
+                                                                                                                                    binding.resul4.text =
+                                                                                                                                        String.format(
+                                                                                                                                            "%.2e",
+                                                                                                                                            esi
+                                                                                                                                        )
+
+                                                                                                                                    //graficas
+
+                                                                                                                                    val chart: BarChart =
+                                                                                                                                        binding.chart1
+                                                                                                                                    val entries =
+                                                                                                                                        ArrayList<BarEntry>()
+
+                                                                                                                                    entries.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            0f,
+                                                                                                                                            plantingsum.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            1f,
+                                                                                                                                            emergia_p_f6.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            2f,
+                                                                                                                                            reno2.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            3f,
+                                                                                                                                            noreno2.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+
+                                                                                                                                    val dataSet =
+                                                                                                                                        BarDataSet(
+                                                                                                                                            entries,
+                                                                                                                                            ""
+                                                                                                                                        )
+                                                                                                                                    val dataSets =
+                                                                                                                                        ArrayList<BarDataSet>()
+                                                                                                                                    dataSets.add(
+                                                                                                                                        dataSet
+                                                                                                                                    )
+                                                                                                                                    dataSet.colors =
+                                                                                                                                        listOf(
+                                                                                                                                            Color.BLUE,
+                                                                                                                                            Color.BLACK,
+                                                                                                                                            Color.MAGENTA,
+                                                                                                                                            Color.YELLOW
+                                                                                                                                        )
+                                                                                                                                    dataSet.setDrawValues(
+                                                                                                                                        false
+                                                                                                                                    )
+                                                                                                                                    val data =
+                                                                                                                                        BarData(
+                                                                                                                                            dataSets as List<IBarDataSet>?
+                                                                                                                                        )
+
+                                                                                                                                    chart.data =
+                                                                                                                                        data
+
+                                                                                                                                    chart.axisRight.isEnabled =
+                                                                                                                                        false
+                                                                                                                                    chart.axisLeft.isEnabled =
+                                                                                                                                        false
+                                                                                                                                    chart.xAxis.isEnabled =
+                                                                                                                                        false
+
+                                                                                                                                    chart.invalidate()
+
+
+                                                                                                                                    val pieChart: PieChart =
+                                                                                                                                        binding.chart2
+                                                                                                                                    val entries2 =
+                                                                                                                                        ArrayList<PieEntry>()
+                                                                                                                                    entries2.add(
+                                                                                                                                        PieEntry(
+                                                                                                                                            plantingsum.toFloat(),
+                                                                                                                                            "R-Renova.."
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries2.add(
+                                                                                                                                        PieEntry(
+                                                                                                                                            emergia_p_f6.toFloat(),
+                                                                                                                                            "R-No Renova.."
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries2.add(
+                                                                                                                                        PieEntry(
+                                                                                                                                            reno2.toFloat(),
+                                                                                                                                            "N-Renova.."
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries2.add(
+                                                                                                                                        PieEntry(
+                                                                                                                                            noreno2.toFloat(),
+                                                                                                                                            "N-No Renova.."
+                                                                                                                                        )
+                                                                                                                                    )
+
+                                                                                                                                    val dataSet2 =
+                                                                                                                                        PieDataSet(
+                                                                                                                                            entries2,
+                                                                                                                                            "  "
+                                                                                                                                        )
+                                                                                                                                    dataSet2.colors =
+                                                                                                                                        listOf(
+                                                                                                                                            Color.BLUE,
+                                                                                                                                            Color.BLACK,
+                                                                                                                                            Color.MAGENTA,
+                                                                                                                                            Color.YELLOW
+                                                                                                                                        )
+
+                                                                                                                                    val formatter =
+                                                                                                                                        PercentFormatter(
+                                                                                                                                            pieChart
+                                                                                                                                        )
+                                                                                                                                    dataSet2.valueFormatter =
+                                                                                                                                        formatter
+
+                                                                                                                                    val data2 =
+                                                                                                                                        PieData(
+                                                                                                                                            dataSet2
+                                                                                                                                        )
+                                                                                                                                    data2.setValueFormatter(
+                                                                                                                                        formatter
+                                                                                                                                    )
+
+                                                                                                                                    pieChart.data =
+                                                                                                                                        data2
+                                                                                                                                    val legend =
+                                                                                                                                        pieChart.legend
+
+                                                                                                                                    dataSet2.valueTextColor =
+                                                                                                                                        Color.BLACK
+                                                                                                                                    dataSet2.valueTextSize =
+                                                                                                                                        12f
+                                                                                                                                    legend.textColor =
+                                                                                                                                        Color.BLACK
+                                                                                                                                    legend.textSize =
+                                                                                                                                        12f
+
+                                                                                                                                    pieChart.invalidate()
+
+
+                                                                                                                                    val chart3: BarChart =
+                                                                                                                                        binding.chart3
+                                                                                                                                    val entries3 =
+                                                                                                                                        ArrayList<BarEntry>()
+
+
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            0f,
+                                                                                                                                            plantingsum.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            1f,
+                                                                                                                                            siwret.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            2f,
+                                                                                                                                            fertilizers.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            3f,
+                                                                                                                                            organicFertilizer.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            4f,
+                                                                                                                                            humanlabor.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            5f,
+                                                                                                                                            machinaryandequipment.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            6f,
+                                                                                                                                            machinaryandEquipmentH.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            7f,
+                                                                                                                                            fuelandlubricants.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            8f,
+                                                                                                                                            HTvehicle.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            9f,
+                                                                                                                                            humanlaborH.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            10f,
+                                                                                                                                            siweD.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            11f,
+                                                                                                                                            waterD.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            12f,
+                                                                                                                                            machinaryandEquipmentD.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            13f,
+                                                                                                                                            humanlaborD.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            14f,
+                                                                                                                                            buildingsD.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            15f,
+                                                                                                                                            electricityandfuelD.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            16f,
+                                                                                                                                            machinaryandequipmentP.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            17f,
+                                                                                                                                            humanlaborP.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            18f,
+                                                                                                                                            buildingsP.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+                                                                                                                                    entries3.add(
+                                                                                                                                        BarEntry(
+                                                                                                                                            19f,
+                                                                                                                                            electricityP.toFloat()
+                                                                                                                                        )
+                                                                                                                                    )
+
+
+                                                                                                                                    val dataSet3 =
+                                                                                                                                        BarDataSet(
+                                                                                                                                            entries3,
+                                                                                                                                            ""
+                                                                                                                                        )
+                                                                                                                                    dataSet3.colors =
+                                                                                                                                        listOf(
+                                                                                                                                            Color.GREEN,
+                                                                                                                                            Color.GREEN,
+                                                                                                                                            Color.GREEN,
+                                                                                                                                            Color.GREEN,
+                                                                                                                                            Color.GREEN,
+                                                                                                                                            Color.RED,
+                                                                                                                                            Color.RED,
+                                                                                                                                            Color.RED,
+                                                                                                                                            Color.RED,
+                                                                                                                                            Color.RED,
+                                                                                                                                            Color.YELLOW,
+                                                                                                                                            Color.YELLOW,
+                                                                                                                                            Color.YELLOW,
+                                                                                                                                            Color.YELLOW,
+                                                                                                                                            Color.YELLOW,
+                                                                                                                                            Color.YELLOW,
+                                                                                                                                            Color.BLUE,
+                                                                                                                                            Color.BLUE,
+                                                                                                                                            Color.BLUE,
+                                                                                                                                            Color.BLUE
+                                                                                                                                        )
+                                                                                                                                    val dataSets3 =
+                                                                                                                                        ArrayList<BarDataSet>()
+                                                                                                                                    dataSets3.add(
+                                                                                                                                        dataSet3
+                                                                                                                                    )
+
+                                                                                                                                    val data3 =
+                                                                                                                                        BarData(
+                                                                                                                                            dataSets3 as List<IBarDataSet>?
+                                                                                                                                        )
+
+
+                                                                                                                                    chart3.data =
+                                                                                                                                        data3
+                                                                                                                                    chart3.axisRight.isEnabled =
+                                                                                                                                        false
+                                                                                                                                    chart3.axisLeft.isEnabled =
+                                                                                                                                        false
+                                                                                                                                    chart3.xAxis.isEnabled =
+                                                                                                                                        false
+                                                                                                                                    chart3.invalidate()
                                                                                                                                 }
+                                                                                                                            }catch (e:Exception){
+                                                                                                                                Log.d(
+                                                                                                                                    "errorrrr",
+                                                                                                                                    "getStateData: $e"
+                                                                                                                                )
                                                                                                                             }
 
-                                                                                                                            val eyr = (totalf/ (reno2+ noreno2));
-                                                                                                                            val elr = ((emergia_p_f6 + noreno2) / (plantingsum + reno2))
-                                                                                                                            val eir = ((reno2 + noreno2) / (emergia_p_f6 + plantingsum))
-                                                                                                                            val esi = (eyr / elr)
-
-
-
-
-                                                                                                                            requireActivity().runOnUiThread {
-                                                                                                                                binding.renovables1.text =
-                                                                                                                                    String.format(
-                                                                                                                                        "%.2e",
-                                                                                                                                        plantingsum
-                                                                                                                                    )
-                                                                                                                                binding.Rnorenovables.text =
-                                                                                                                                    String.format(
-                                                                                                                                        "%.2e",
-                                                                                                                                        emergia_p_f6
-                                                                                                                                    )
-                                                                                                                                binding.reno2.text =
-                                                                                                                                    String.format(
-                                                                                                                                        "%.2e",
-                                                                                                                                        reno2
-                                                                                                                                    )
-                                                                                                                                binding.noreno2.text =
-                                                                                                                                    String.format(
-                                                                                                                                        "%.2e",
-                                                                                                                                        noreno2
-                                                                                                                                    )
-                                                                                                                                binding.totalf.text =
-                                                                                                                                    String.format(
-                                                                                                                                        "%.2e",
-                                                                                                                                        totalf
-                                                                                                                                    )
-                                                                                                                                //transformidad
-                                                                                                                                binding.resul1.text =
-                                                                                                                                    String.format(
-                                                                                                                                        "%.2e",
-                                                                                                                                        eyr
-                                                                                                                                    )
-                                                                                                                                binding.resul2.text =
-                                                                                                                                    String.format(
-                                                                                                                                        "%.2e",
-                                                                                                                                        elr
-                                                                                                                                    )
-                                                                                                                                binding.resul3.text =
-                                                                                                                                    String.format(
-                                                                                                                                        "%.2e",
-                                                                                                                                        eir
-                                                                                                                                    )
-                                                                                                                                binding.resul4.text =
-                                                                                                                                    String.format(
-                                                                                                                                        "%.2e",
-                                                                                                                                        esi
-                                                                                                                                    )
-
-                                                                                                                            }
                                                                                                                             Log.d(
                                                                                                                                 "DATOSVALIDOS",
                                                                                                                                 "R renovables: ${

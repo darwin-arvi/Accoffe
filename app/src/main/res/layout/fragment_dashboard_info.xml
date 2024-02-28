@@ -12,7 +12,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             tools:context=".ui.dashboard.DashboardInfoFragment">
-
+            <Button
+                android:id="@+id/btnback1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="Atras"
+                android:layout_marginHorizontal="10dp"
+                android:backgroundTint="@color/design_default_color_error"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -20,30 +28,22 @@
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btnback1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:text="Back"
-                    android:backgroundTint="@color/design_default_color_error"
-                    />
-
                 <TextView
                     android:layout_width="234dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="29dp"
                     android:layout_weight="12"
-                    android:text="ESTATE INFORMATION"
+                    android:text="INFORMACION DE LA FINCA"
                     android:textColor="@color/black"
                     android:textSize="22sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:background="#0F8EE3"/>
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="10dp"
                 android:elevation="16dp"
                 android:padding="8dp">
@@ -59,12 +59,13 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="NAME ESTATE = "
+                            android:text="NOMBRE DE LA FINCA = "
                             android:textColor="#000000" />
 
                         <TextView
@@ -79,12 +80,13 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
+                        android:layout_marginTop="5dp"
+                        android:layout_marginHorizontal="5dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="YEAR = "
+                            android:text="AÑO = "
                             android:textColor="#000000" />
 
                         <TextView
@@ -99,12 +101,13 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
+                        android:layout_marginTop="5dp"
+                        android:layout_marginHorizontal="5dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TYPE CROP = "
+                            android:text="TIPO DE CULTIVO = "
                             android:textColor="#000000" />
 
                         <TextView
@@ -118,12 +121,13 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
+                        android:layout_marginTop="5dp"
+                        android:layout_marginHorizontal="5dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="PRODUCT AREA = "
+                            android:text="AREA DE PRODUCCION = "
                             android:textColor="#000000" />
 
                         <TextView
@@ -137,7 +141,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
+                        android:layout_marginTop="5dp"
+                        android:layout_marginHorizontal="5dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -156,12 +161,13 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
+                        android:layout_marginTop="5dp"
+                        android:layout_marginHorizontal="5dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="CONVERTION ALMENDRA = "
+                            android:text="CONVERCION ALMENDRA = "
                             android:textColor="#000000" />
 
                         <TextView
@@ -175,7 +181,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
+                        android:layout_marginTop="5dp"
+                        android:layout_marginHorizontal="5dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -212,39 +219,44 @@
 
                     <Button
                         android:id="@+id/plantationManagement"
-                        android:layout_width="match_parent"
+                        android:layout_width="369dp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#4CAF50"
-                        android:text="PLANTATION MANAGEMET" />
+                        android:text="GESTIONAR PLANTACION"
+                        android:layout_marginHorizontal="10dp"/>
 
                     <Button
                         android:id="@+id/btnharvestmanagement"
-                        android:layout_width="match_parent"
+                        android:layout_width="369dp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#4CAF50"
-                        android:text="HARVEST MANAGEMET" />
+                        android:text="GESTIONAR COSECHA"
+                        android:layout_marginHorizontal="10dp"/>
 
                     <Button
                         android:id="@+id/btndrayingmanagement"
-                        android:layout_width="match_parent"
+                        android:layout_width="369dp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#4CAF50"
-                        android:text="DRYING MANAGEMET" />
+                        android:text="GESTIONAR SECADO"
+                        android:layout_marginHorizontal="10dp"/>
 
                     <Button
                         android:id="@+id/btnpreprocessingmanagement"
-                        android:layout_width="match_parent"
+                        android:layout_width="369dp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#4CAF50"
-                        android:text="PRE-PROCESSING MANAGEMET"
+                        android:text="GESTIONAR TRILLA"
+                        android:layout_marginHorizontal="10dp"
                         app:layout_constraintVertical_bias="0.963" />
 
                     <Button
                         android:id="@+id/btninfoGraphs"
-                        android:layout_width="match_parent"
+                        android:layout_width="369dp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#4CAF50"
-                        android:text="GRAFICAS"
+                        android:text="VER GRAFICAS"
+                        android:layout_marginHorizontal="10dp"
                         app:layout_constraintVertical_bias="0.963" />
 
                 </LinearLayout>

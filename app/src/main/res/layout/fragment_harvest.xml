@@ -22,7 +22,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/year_harvest"
+            android:hint="Año de cosecha"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_h_year"
@@ -38,7 +38,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/valor_maquinariay_mantenimiento"
+            android:hint="Valor maquinaria y mantenimiento"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_h_maq_man"
@@ -54,7 +54,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/valor_combustible"
+            android:hint="Valor del combustible"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_h_combustible"
@@ -70,7 +70,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/valor_transporte"
+            android:hint= "Valor del transporte"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_h_transport"
@@ -86,7 +86,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/jornal_recoleccion"
+            android:hint="Jornal recoleccion"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_l_Pjornal_recole"
@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:singleLine="true"
-                android:text="@string/back"
+                android:text="Atras"
                 android:layout_weight="1"
                 android:layout_marginEnd="10dp"
                 android:textStyle="bold"
@@ -118,7 +118,7 @@
                 android:layout_gravity="center"
                 android:singleLine="true"
                 android:layout_weight="1"
-                android:text="@string/save"
+                android:text="Guardar"
                 android:textStyle="bold"
                 style="?android:attr/buttonBarButtonStyle" />
         </LinearLayout>

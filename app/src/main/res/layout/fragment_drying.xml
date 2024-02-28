@@ -21,7 +21,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/year_drying"
+            android:hint="Año de secado"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_d_year"
@@ -37,7 +37,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/valor_maquinaria"
+            android:hint="Valor maquinaria"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_d_val_maq"
@@ -53,7 +53,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/transpiracion"
+            android:hint="Transpiracion"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_transpiracion"
@@ -69,7 +69,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/asist_tecnica_papeleria"
+            android:hint="Asist_tecnica_papeleria"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_d_gf_Benef"
@@ -85,7 +85,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/produccion"
+            android:hint="Produccion"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_d_produccion"
@@ -101,7 +101,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/valor_combustible"
+            android:hint="Valor combustible"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_d_combustible"
@@ -117,7 +117,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/densidad_1000kg_m"
+            android:hint="Densidad_1000kg_m"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_densidad2"
@@ -133,7 +133,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/insolacion"
+            android:hint="Insolacion"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_insolation"
@@ -149,7 +149,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/dias_de_secado"
+            android:hint="Dias de secado"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_d_dias_secado"
@@ -165,7 +165,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/valor_infraestructura"
+            android:hint="Valor de infraestructura"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_d_val_infra"
@@ -181,7 +181,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/energia_libre"
+            android:hint="Energia_libre"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_enegia_lib"
@@ -197,7 +197,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/admosfera"
+            android:hint="Admosfera"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_admosfra"
@@ -229,7 +229,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/promedio_electrico"
+            android:hint="Promedio electrico"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_d_promedio_electrico"
@@ -245,7 +245,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/dolar"
+            android:hint="Dolar"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_l_Pdolar"
@@ -261,7 +261,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/densidad_del_aire"
+            android:hint="Densidad del aire"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_densidadA"
@@ -277,7 +277,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/numero_de_patios"
+            android:hint="Numero de patios"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_d_patio_secado"
@@ -293,7 +293,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/area_total"
+            android:hint="Area_total"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_area_finca"
@@ -309,7 +309,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/albedo"
+            android:hint="Albedo"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_albedo"
@@ -325,7 +325,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/viento"
+            android:hint="Viento"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_viento"
@@ -345,7 +345,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:singleLine="true"
-                android:text="@string/back"
+                android:text="Atras"
                 android:layout_weight="1"
                 android:layout_marginEnd="10dp"
                 android:textStyle="bold"
@@ -357,7 +357,7 @@
                 android:layout_gravity="center"
                 android:singleLine="true"
                 android:layout_weight="1"
-                android:text="@string/save"
+                android:text="Guardar"
                 android:textStyle="bold"
                 style="?android:attr/buttonBarButtonStyle" />
         </LinearLayout>

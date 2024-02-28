@@ -22,7 +22,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/year"
+            android:hint="Año de trilla"
             android:textColorHint="@color/black"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
@@ -30,8 +30,7 @@
                 android:inputType="date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/black"
-                android:background="@color/white"/>
+                android:textColorHint="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -41,7 +40,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/valor_maquinaria"
+            android:hint="Valor maquinaria"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_b_val_maq"
@@ -57,7 +56,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/valor_promedio_dolar"
+            android:hint="Valor promedio dolar"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_b_dolar"
@@ -73,7 +72,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/valor_infraestructura"
+            android:hint="Valor infraestructura"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_b_val_infra"
@@ -89,7 +88,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/valor_promedio_electrico"
+            android:hint="Valor promedio electrico"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_b_promed_electrico"
@@ -105,7 +104,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/numero_de_costales"
+            android:hint="Numero de costales"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_b_num_costales"
@@ -121,7 +120,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="beneficios por año"
+            android:hint="Beneficios por año"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_b_gf_Benef"
@@ -142,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:singleLine="true"
-                android:text="@string/back"
+                android:text="Atras"
                 android:layout_weight="1"
                 android:layout_marginEnd="10dp"
                 android:textStyle="bold"
@@ -155,7 +154,7 @@
 
                 android:singleLine="true"
                 android:layout_weight="1"
-                android:text="@string/save"
+                android:text="Guardar"
                 android:textStyle="bold"
                 style="?android:attr/buttonBarButtonStyle" />
         </LinearLayout>

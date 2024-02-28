@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/btnSingOut"
@@ -22,18 +23,23 @@
             android:layout_height="45dp"
             android:backgroundTint="@color/design_default_color_error"
 
-            android:text="Sing Out" />
+            android:text="CERRAR SESION" />
 
-        <TextView
-            android:layout_width="116dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="20dp"
-            android:text="Estate List"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:background="#0F8EE3">
+            <TextView
+                android:layout_width="227dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="110dp"
+                android:text="LISTA DE FINCAS"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
+        </LinearLayout>
     </LinearLayout>
 
 
@@ -55,7 +61,7 @@
         android:layout_marginHorizontal="4dp"
         android:layout_marginBottom="10dp"
         android:id="@+id/btnAddEstate"
-        android:text="Add new Estate +"
+        android:text="Añadir Nueva Finca +"
         android:backgroundTint="#4CAF50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

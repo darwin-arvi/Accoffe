@@ -35,14 +35,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:text="Back" />
+                    android:text="Atras" />
 
                 <TextView
                     android:layout_width="234dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_weight="12"
-                    android:text="Harvest Table"
+                    android:text="Tabla de Cosecha"
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -73,7 +73,7 @@
                             android:id="@+id/item1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="MACHINERY-EQUIPAMENT(J)"
+                            android:text="MACHINERIA Y EQUIPAMIENTO(J)"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginStart="65dp"/>
@@ -205,10 +205,10 @@
 
                         <TextView
                             android:id="@+id/item2"
-                            android:layout_width="260dp"
+                            android:layout_width="285dp"
                             android:layout_height="wrap_content"
-                            android:text="FUEL AND LUBRICANTS (J)"
                             android:layout_marginStart="65dp"
+                            android:text="COMBUSTIBLE Y LUBRICANTE (J)"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -330,7 +330,7 @@
                             android:id="@+id/item3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="HARVEST TRANSPORTATE (USD)"
+                            android:text="TRASLADO DE COSECHA (USD)"
                             android:layout_marginStart="65dp"
                             android:textColor="@color/black"
                             android:textSize="18sp"/>
@@ -443,7 +443,7 @@
                             android:id="@+id/item4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="HUMAN LABOR(USD)"
+                            android:text="LABOR HUMANA(USD)"
                             android:layout_marginStart="65dp"
                             android:textColor="@color/black"
                             android:textSize="18sp"/>

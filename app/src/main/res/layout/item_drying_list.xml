@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="38dp"
             android:layout_marginTop="96dp"
-            android:text="Edit"
+            android:text="Editar"
             android:backgroundTint="@color/purple_700"
             app:layout_constraintStart_toEndOf="@+id/btninfoDrying"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="38dp"
             android:backgroundTint="@color/design_default_color_error"
-            android:text="Delete"
+            android:text="Borrar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnEditdrying"
             app:layout_constraintTop_toTopOf="parent"

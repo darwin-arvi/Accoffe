@@ -26,7 +26,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/year_planting"
+            android:hint="Año de plantacion"
             tools:ignore="MissingConstraints">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -43,7 +43,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/velocidad_del_viento"
+            android:hint="Velocidad del viento"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_vel_viento"
@@ -59,7 +59,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/aspecto_hidrico"
+            android:hint="Aspecto hidrico"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_aspec_hidrico"
@@ -75,7 +75,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/perdida_del_suelo"
+            android:hint="Perdida del suelo"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_perdida_suelo"
@@ -91,7 +91,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/urea"
+            android:hint="Urea"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_urea"
@@ -107,7 +107,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/albedo"
+            android:hint="Albedo"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_albedo"
@@ -123,7 +123,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/duracion_del_cultivo"
+            android:hint="Duracion del cultivo"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_duracion_cult"
@@ -139,7 +139,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/agua_lluvia_circula_libre"
+            android:hint="Agua lluvia_circula libre"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_agua"
@@ -155,7 +155,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/contenido_materia_organica"
+            android:hint="Contenido materia organica"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_cont_materia_orga"
@@ -171,7 +171,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/cal"
+            android:hint="Cal"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_cal"
@@ -187,7 +187,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/pesticidas_y_fungicidas"
+            android:hint="Pesticidas y fungicidas"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_pest_fung"
@@ -203,7 +203,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/prom_insolacion"
+            android:hint="Promedio insolacion"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_promedio_inso"
@@ -219,7 +219,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/evaporacion_potencial"
+            android:hint="Evaporacion potencial"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_evaporacion_poten"
@@ -235,7 +235,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/promedio_de_elevacion"
+            android:hint="Promedio de elevacion"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_promedio_altura"
@@ -251,7 +251,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/fertilizante_de_nitrogeno"
+            android:hint="Fertilizante de nitrogeno"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_ferti_nitro"
@@ -267,7 +267,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/materia_organica"
+            android:hint="Materia organica"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_materia_orga"
@@ -283,7 +283,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/jornal_siembra_mante"
+            android:hint="Jornal siembra mantenimiento"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_l_siembra_mante"
@@ -299,7 +299,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/capa_admosfera"
+            android:hint="Capa admosfera"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_capa_admos"
@@ -315,7 +315,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/coeficiente_del_cultivo"
+            android:hint="Coeficiente del cultivo"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_coefi_cult"
@@ -331,7 +331,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/densidad"
+            android:hint="Densidad"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_densidad"
@@ -347,7 +347,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/fertilizante_de_fosfato"
+            android:hint="Fertilizante de fosfato"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_ferti_fosfato"
@@ -363,7 +363,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/semillas"
+            android:hint="Semillas"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_semillas"
@@ -379,7 +379,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/area_de_cultivo"
+            android:hint="Area de cultivo"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_area_finca"
@@ -395,7 +395,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/densidad_del_aire"
+            android:hint="Densidad del aire"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_densidad_aire"
@@ -411,7 +411,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/energia_libre_gibbs"
+            android:hint="Energia libre gibbs"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_energia_libre_gibbs"
@@ -427,7 +427,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/transpiracion"
+            android:hint="Transpiracion"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_transpiracion"
@@ -443,7 +443,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/fertilizante_de_potacio"
+            android:hint="Fertilizante de potacio"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_ferti_potacio"
@@ -459,7 +459,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="@string/maquinaria_y_mantenimiento"
+            android:hint="Maquinaria y mantenimiento"
             tools:ignore="MissingConstraints">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_p_maq_man"
@@ -479,7 +479,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:singleLine="true"
-                android:text="@string/back"
+                android:text="Atras"
                 android:layout_weight="1"
                 android:layout_marginEnd="10dp"
                 android:textStyle="bold"
@@ -491,7 +491,7 @@
                 android:layout_gravity="center"
                 android:singleLine="true"
                 android:layout_weight="1"
-                android:text="@string/save"
+                android:text="Guardar"
                 android:textStyle="bold"
                 style="?android:attr/buttonBarButtonStyle" />
         </LinearLayout>

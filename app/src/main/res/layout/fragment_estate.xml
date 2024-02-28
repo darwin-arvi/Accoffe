@@ -13,7 +13,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
-        android:hint="name estate"
+        android:hint="Nombre de la finca"
         tools:ignore="MissingConstraints">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_ename"
@@ -30,7 +30,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
-        android:hint="@string/year_crop"
+        android:hint="Año de cultivo"
         tools:ignore="MissingConstraints">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_eyear"
@@ -46,7 +46,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
-        android:hint="@string/h_product_area"
+        android:hint="Area de producto"
         tools:ignore="MissingConstraints">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_eproductarea"
@@ -62,7 +62,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
-        android:hint="@string/total_area"
+        android:hint="Area total"
         tools:ignore="MissingConstraints">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_etotalarea"
@@ -78,7 +78,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
-        android:hint="@string/convertion_almendra"
+        android:hint="Conversion almendra"
         tools:ignore="MissingConstraints">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_econvertionalmendra"
@@ -94,7 +94,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
-        android:hint="@string/type_crop"
+        android:hint="Tipo de cultivo"
         tools:ignore="MissingConstraints">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_etypecrop"
@@ -110,7 +110,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
-        android:hint="@string/dolar_peso"
+        android:hint="Dolar_peso"
         tools:ignore="MissingConstraints">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_edolar"
@@ -131,7 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:singleLine="true"
-            android:text="@string/back"
+            android:text="Atras"
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
             android:textStyle="bold"
@@ -144,7 +144,7 @@
 
             android:singleLine="true"
             android:layout_weight="1"
-            android:text="@string/save"
+            android:text="Guardar"
             android:textStyle="bold"
             style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>

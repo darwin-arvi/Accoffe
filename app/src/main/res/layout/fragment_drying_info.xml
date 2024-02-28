@@ -33,14 +33,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:text="Back" />
+                    android:text="Atras" />
 
                 <TextView
                     android:layout_width="234dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_weight="12"
-                    android:text="Drying Table"
+                    android:text="Table de Secado"
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -70,7 +70,7 @@
                             android:id="@+id/item1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="SOLAR INSOLATION(J)"
+                            android:text="ENSOLACION SOLAR (J)"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginStart="65dp"/>
@@ -195,7 +195,7 @@
                             android:id="@+id/item2"
                             android:layout_width="260dp"
                             android:layout_height="wrap_content"
-                            android:text="WIND, KINETIC ENERGY (J)"
+                            android:text="VIENTO, ENERGIA CINETICA (J)"
                             android:layout_marginStart="65dp"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
@@ -314,7 +314,7 @@
                             android:id="@+id/item3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="EVAPORATION (G)"
+                            android:text="EVAPORACION (G)"
                             android:layout_marginStart="65dp"
                             android:textColor="@color/black"
                             android:textSize="18sp"/>
@@ -426,7 +426,7 @@
                             android:id="@+id/item4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="WATER (CUADRA)"
+                            android:text="AGUA (CUADRA)"
                             android:layout_marginStart="65dp"
                             android:textColor="@color/black"
                             android:textSize="18sp"/>
@@ -539,7 +539,7 @@
                             android:id="@+id/item5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="DRYING YARD OR ''PASERAS''(G)"
+                            android:text="PATIO DE SECADO O ''PASERAS''(G)"
                             android:layout_marginStart="65dp"
                             android:textColor="@color/black"
                             android:textSize="18sp"/>
@@ -652,7 +652,7 @@
                             android:id="@+id/item6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="MACHINERY AND EQUIPAMENT(USD)(CUADRA)"
+                            android:text="MAQUIINERIA Y EQUIPAMIENTO(USD)(CUADRA)"
                             android:textColor="@color/black"
                             android:textSize="18sp"/>
                     </LinearLayout>
@@ -764,7 +764,7 @@
                             android:id="@+id/item7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="HUMAN LABOR(USD)"
+                            android:text="LABOR HUMANA (USD)"
                             android:layout_marginStart="65dp"
                             android:textColor="@color/black"
                             android:textSize="18sp"/>
@@ -877,7 +877,7 @@
                             android:id="@+id/item8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="FUEL (J)"
+                            android:text="COMBUSTIBLE (J)"
                             android:layout_marginStart="65dp"
                             android:textColor="@color/black"
                             android:textSize="18sp"/>
@@ -990,7 +990,7 @@
                             android:id="@+id/item9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="BUILDINGS (USD)(CUADRA)"
+                            android:text="EDIFICIOS (USD)(CUADRA)"
                             android:layout_marginStart="65dp"
                             android:textColor="@color/black"
                             android:textSize="18sp"/>
@@ -1103,7 +1103,7 @@
                             android:id="@+id/item0"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="ELECTRICITY(USD)(CUADRA)"
+                            android:text="ELECTRICIDAD (USD)(CUADRA)"
                             android:layout_marginStart="65dp"
                             android:textColor="@color/black"
                             android:textSize="18sp"/>

@@ -125,7 +125,7 @@ class EstateFragment : Fragment() {
                 try {
                     initViews()
                     val estate = EstateModel("",econvertionalmendra.toDouble(),edolar.toDouble(),ename.toString(),
-                        eproductarea.toDouble(),etotalarea.toDouble(),etypecrop.toString(),eyear.toString(),getUid(requireContext()))
+                        eproductarea.toDouble(),etotalarea.toDouble(),etypecrop.toDouble(),eyear.toString(),getUid(requireContext()))
 
                     val documentReference = estateCollection.add(estate).await()
                     println("Document created with ID: ${documentReference.id}")
@@ -146,7 +146,7 @@ class EstateFragment : Fragment() {
         binding.botonBack.setOnClickListener {
             val bundle = Bundle()
             bundle.putString("estateId", estateId)
-            Navigation.findNavController(requireView()).navigate(R.id.dashboardInfoFragment,bundle)
+            Navigation.findNavController(requireView()).navigate(R.id.nav_home,bundle)
         }
     }
 private fun initViews() {

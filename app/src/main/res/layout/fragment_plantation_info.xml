@@ -32,14 +32,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:text="Back" />
+                    android:text="Atras" />
 
                 <TextView
                     android:layout_width="234dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_weight="12"
-                    android:text="PLANTATION TABLE"
+                    android:text="TABLA DE PLANTACION"
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -69,7 +69,7 @@
                             android:id="@+id/item1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="SOLAR INSOLATION(J)"
+                            android:text="INSOLACION SOLAR(J)"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginStart="65dp"/>
@@ -238,7 +238,7 @@
                             android:id="@+id/item2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="WIND, KINETIC ENERGY(J)"
+                            android:text="VIENTO, ENERGIA CINETICA(J)"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginStart="65dp"/>
@@ -407,7 +407,7 @@
                             android:id="@+id/item3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="RAIN, CHEMICAL ENRGY (J)"
+                            android:text="LLUVIA, ENERGIA QUIMICA (J)"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginStart="65dp"/>
@@ -576,7 +576,7 @@
                             android:id="@+id/item4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="RAIN, GEOPOTENTIAL ENERGY (J)"
+                            android:text="LLUVIA, ENERGIA GEOPOTENCIAL (J)"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginStart="65dp"/>
@@ -745,7 +745,7 @@
                             android:id="@+id/item5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="EVAPOTRANSPIRATION (J)"
+                            android:text="EVAPOTRANSPIRACION (J)"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginStart="65dp"/>
@@ -914,7 +914,7 @@
                             android:id="@+id/item6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="SOIL EROSION (J)"
+                            android:text="EROSION DEL SULEO (J)"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginStart="65dp"/>
@@ -1083,7 +1083,7 @@
                             android:id="@+id/item7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="NITROGEN (G)"
+                            android:text="NITROGENO (G)"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginStart="65dp"/>
@@ -1251,7 +1251,7 @@
                             android:id="@+id/item8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="PHOSPHATE (G)"
+                            android:text="FOSFATO (G)"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginStart="65dp"/>
@@ -1419,7 +1419,7 @@
                             android:id="@+id/item9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="POTASSIUM (G)"
+                            android:text="POTASIO (G)"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginStart="65dp"/>
@@ -1923,7 +1923,7 @@
                             android:id="@+id/item222"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="ORGANIC FERTILIZER (J)"
+                            android:text="FERTILIZANTE ORGANICO (J)"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginStart="65dp"/>
@@ -2091,7 +2091,7 @@
                             android:id="@+id/item333"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="SEEDS (J)"
+                            android:text="SEMILLA (J)"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginStart="65dp"/>
@@ -2259,7 +2259,7 @@
                             android:id="@+id/item444"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="MACHINERY AND EQUIPAMENT (G)"
+                            android:text="MAQUINARIA Y EQUIPAMIENTO (G)"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginStart="65dp"/>
@@ -2425,7 +2425,7 @@
                             android:id="@+id/item555"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="HUMAN LABOR (USD)"
+                            android:text="LABOR HUMANA (USD)"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginStart="65dp"/>
@@ -2593,7 +2593,7 @@
                             android:id="@+id/item666"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="PESTICIDES AND FUNGICIDES(G)"
+                            android:text="PESTICIDAS Y FUNGICIDAS(G)"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginStart="65dp"/>

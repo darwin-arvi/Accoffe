@@ -9,7 +9,7 @@ data class EstateModel(
     val ename: String?="",
     val eproductarea: Double?=0.0,
     val etotalarea: Double?=0.0,
-    val etypecrop: String?="",
+    val etypecrop: Double?=0.0,
     val eyear: String?="",
     val userId:String?=""
 ) {

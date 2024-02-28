@@ -96,6 +96,7 @@ class HarvestInfoFragment : Fragment() {
 
                         this.estateInfoModel.total_c = total_c
 
+
                         this.energyModel.emergia_p_f17 = emergia_p_f17
                         this.energyModel.emergia_p_f18 = emergia_p_f18
                         this.energyModel.emergia_p_f19 = emergia_p_f19
@@ -110,23 +111,37 @@ class HarvestInfoFragment : Fragment() {
                         )
 
 
-                        binding.tvflujoanual.text = estateDataModel.h_maq_man.toString()
-                        binding.item13.text = estateInfoModel.transformidad_f17.toString()
-                        binding.item14.text = energyModel.emergia_p_f17.toString()
+                        binding.tvflujoanual.text = String.format(
+                            "%.2e",estateDataModel.h_maq_man)
+                        binding.item13.text = String.format(
+                            "%.2e",estateInfoModel.transformidad_f17)
+                        binding.item14.text = String.format(
+                            "%.2e",energyModel.emergia_p_f17)
 
-                        binding.item22.text = estateInfoModel.anio_analizado_c1.toString()
-                        binding.item23.text = estateInfoModel.transformidad_f18.toString()
-                        binding.item24.text = energyModel.emergia_p_f18.toString()
+                        binding.item22.text = String.format(
+                            "%.2e",estateInfoModel.anio_analizado_c1)
+                        binding.item23.text = String.format(
+                            "%.2e",estateInfoModel.transformidad_f18)
+                        binding.item24.text = String.format(
+                            "%.2e",energyModel.emergia_p_f18)
 
-                        binding.item32.text = estateDataModel.h_transport.toString()
-                        binding.item33.text = estateInfoModel.transformidad_f19.toString()
-                        binding.item34.text = energyModel.emergia_p_f19.toString()
+                        binding.item32.text = String.format(
+                            "%.2e",estateDataModel.h_transport)
+                        binding.item33.text = String.format(
+                                    "%.2e",estateInfoModel.transformidad_f19)
+                        binding.item34.text = String.format(
+                                    "%.2e",energyModel.emergia_p_f19)
 
-                        binding.item42.text = estateDataModel.l_Pjornal_recole.toString()
-                        binding.item43.text = estateInfoModel.transformidad_c20.toString()
-                        binding.item44.text = energyModel.emergia_p_f20.toString()
+                        binding.item42.text = String.format(
+                            "%.2e",estateDataModel.l_Pjornal_recole)
+                        binding.item43.text = String.format(
+                            "%.2e",estateInfoModel.transformidad_c20)
+                        binding.item44.text = String.format(
+                            "%.2e",energyModel.emergia_p_f20)
 
-                        binding.item51.text = estateInfoModel.total_c.toString()
+                        binding.item51.text = String.format(
+                            "%.2e",
+                            estateInfoModel.total_c)
 
                     }
 
@@ -141,6 +156,8 @@ class HarvestInfoFragment : Fragment() {
             }
 
 
+
     }
+
 
 }

@@ -94,7 +94,7 @@ class DryingInfoFragment : Fragment() {
                            //FILA21
                            val insolacion_s = estateDataModel.p_insolation!! * 3600000
                            val insolacion_diez = insolacion_s * 10
-                           val flujo_anual_s1 = insolacion_diez * (1 - estateDataModel.p_albedo!!) * estateDataModel.area_finca!!
+                           val flujo_anual_s1 = (estateDataModel.area_finca!!) * (1 - estateDataModel.p_albedo!!) * (insolacion_diez)
                            var emergia_s1 = flujo_anual_s1 * transformidad
 
                            //FILA22
@@ -175,47 +175,48 @@ class DryingInfoFragment : Fragment() {
                            this.energyModel.emergia_s30 = emergia_s30
                            this.estateInfoModel.total_s = total_s
 
-                           binding.item12.text=estateInfoModel.flujo_anual_s1.toString()
-                           binding.item13.text =estateInfoModel.transformidad.toString()
-                           binding.item14.text =energyModel.emergia_s1.toString()
 
-                           binding.item22.text=estateInfoModel.flujo_anual_s2.toString()
-                           binding.item23.text =estateInfoModel.transformidad_f2.toString()
-                           binding.item24.text =energyModel.emergia_s2.toString()
+                           binding.item12.text=String.format("%.2e",estateInfoModel.flujo_anual_s1)
+                           binding.item13.text =String.format("%.2e",estateInfoModel.transformidad)
+                           binding.item14.text =String.format("%.2e",energyModel.emergia_s1)
 
-                           binding.item32.text=estateInfoModel.flujo_anual_s3.toString()
-                           binding.item33.text =estateInfoModel.transformidad_s3.toString()
-                           binding.item34.text =energyModel.emergia_s3.toString()
+                           binding.item22.text=String.format("%.2e",estateInfoModel.flujo_anual_s2)
+                           binding.item23.text =String.format("%.2e",estateInfoModel.transformidad_f2)
+                           binding.item24.text =String.format("%.2e",energyModel.emergia_s2)
 
-                           binding.item42.text=estateInfoModel.flujo_anual_s4.toString()
-                           binding.item43.text =estateInfoModel.transformidad_s4.toString()
-                           binding.item44.text =energyModel.emergia_s4.toString()
+                           binding.item32.text=String.format("%.2e",estateInfoModel.flujo_anual_s3)
+                           binding.item33.text =String.format("%.2e",estateInfoModel.transformidad_s3)
+                           binding.item34.text =String.format("%.2e",energyModel.emergia_s3)
 
-                           binding.item52.text=estateInfoModel.flujo_anual_s5.toString()
-                           binding.item53.text =estateInfoModel.transformidad_s5.toString()
-                           binding.item54.text =energyModel.emergia_s5.toString()
+                           binding.item42.text=String.format("%.2e",estateInfoModel.flujo_anual_s4)
+                           binding.item43.text =String.format("%.2e",estateInfoModel.transformidad_s4)
+                           binding.item44.text =String.format("%.2e",energyModel.emergia_s4)
 
-                           binding.item62.text=estateInfoModel.flujo_anual_s6.toString()
-                           binding.item63.text =estateInfoModel.transformidad_s6.toString()
-                           binding.item64.text =energyModel.emergia_s6.toString()
+                           binding.item52.text=String.format("%.2e",estateInfoModel.flujo_anual_s5)
+                           binding.item53.text =String.format("%.2e",estateInfoModel.transformidad_s5)
+                           binding.item54.text =String.format("%.2e",energyModel.emergia_s5)
 
-                           binding.item72.text=estateInfoModel.flujo_anual_s7.toString()
-                           binding.item73.text =estateInfoModel.transformidad_s7.toString()
-                           binding.item74.text =energyModel.emergia_s7.toString()
+                           binding.item62.text=String.format("%.2e",estateInfoModel.flujo_anual_s6)
+                           binding.item63.text =String.format("%.2e",estateInfoModel.transformidad_s6)
+                           binding.item64.text =String.format("%.2e",energyModel.emergia_s6)
 
-                           binding.item82.text=estateInfoModel.flujo_anual_s8.toString()
-                           binding.item83.text =estateInfoModel.transformidad_s8.toString()
-                           binding.item84.text =energyModel.emergia_s8.toString()
+                           binding.item72.text=String.format("%.2e",estateInfoModel.flujo_anual_s7)
+                           binding.item73.text =String.format("%.2e",estateInfoModel.transformidad_s7)
+                           binding.item74.text =String.format("%.2e",energyModel.emergia_s7)
 
-                           binding.item92.text=estateInfoModel.flujo_anual_s9.toString()
-                           binding.item93.text =estateInfoModel.transformidad_s9.toString()
-                           binding.item94.text =energyModel.emergia_s9.toString()
+                           binding.item82.text=String.format("%.2e",estateInfoModel.flujo_anual_s8)
+                           binding.item83.text =String.format("%.2e",estateInfoModel.transformidad_s8)
+                           binding.item84.text =String.format("%.2e",energyModel.emergia_s8)
 
-                           binding.item02.text=estateInfoModel.flujo_anual_s30.toString()
-                           binding.item03.text =estateInfoModel.transformidad_s30.toString()
-                           binding.item04.text =energyModel.emergia_s30.toString()
+                           binding.item92.text=String.format("%.2e",estateInfoModel.flujo_anual_s9)
+                           binding.item93.text =String.format("%.2e",estateInfoModel.transformidad_s9)
+                           binding.item94.text =String.format("%.2e",energyModel.emergia_s9)
 
-                           binding.item112.text =estateInfoModel.total_s.toString()
+                           binding.item02.text=String.format("%.2e",estateInfoModel.flujo_anual_s30)
+                           binding.item03.text =String.format("%.2e",estateInfoModel.transformidad_s30)
+                           binding.item04.text =String.format("%.2e",energyModel.emergia_s30)
+
+                           binding.item112.text =String.format("%.2e",estateInfoModel.total_s)
 
                        }
 

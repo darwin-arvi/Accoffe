@@ -31,14 +31,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:text="Back" />
+                    android:text="Atras" />
 
                 <TextView
                     android:layout_width="234dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_weight="12"
-                    android:text="PRE-PROCESSING TABLE - DATE 1"
+                    android:text="TABLA DE TRILLA"
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -68,7 +68,7 @@
                             android:id="@+id/item1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="MACHINERY AND EQUIPAMENT(USD)(CUADRA)"
+                            android:text="MAQUINARIA Y EQUIPAMIENTO(USD)(CUADRA)"
                             android:textColor="@color/black"
                             android:textSize="18sp"/>
 
@@ -192,7 +192,7 @@
                             android:id="@+id/item2"
                             android:layout_width="260dp"
                             android:layout_height="wrap_content"
-                            android:text="WHUMAN LABOR (USD)"
+                            android:text="LABOR HUMANA (USD)"
                             android:layout_marginStart="65dp"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
@@ -311,7 +311,7 @@
                             android:id="@+id/item3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="BUILDINGS (USD)(CUADRA)"
+                            android:text="EDIFICIOS (USD)(CUADRA)"
                             android:layout_marginStart="65dp"
                             android:textColor="@color/black"
                             android:textSize="18sp"/>
@@ -423,7 +423,7 @@
                             android:id="@+id/item4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="ELECTRICITY (USD)(CUADRA)"
+                            android:text="ELECTRICIDAD (USD)(CUADRA)"
                             android:layout_marginStart="65dp"
                             android:textColor="@color/black"
                             android:textSize="18sp"/>
@@ -536,7 +536,7 @@
                             android:id="@+id/item5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="JUTE BAGS"
+                            android:text="BOLSAS DE YUTE"
                             android:layout_marginStart="65dp"
                             android:textColor="@color/black"
                             android:textSize="18sp"/>

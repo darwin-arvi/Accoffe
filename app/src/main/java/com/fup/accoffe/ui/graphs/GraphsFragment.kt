@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.fup.accoffe.databinding.FragmentGraphsBinding
 import com.fup.accoffe.models.EnergyModel
 import com.fup.accoffe.models.EstateDataModel
@@ -62,11 +63,16 @@ class GraphsFragment : Fragment() {
 
         getStateData()
 
-
-
-
-
+backGraphs()
         return root
+    }
+    private fun backGraphs() {
+        val estateId = arguments?.getString("estateId")
+        Log.d("DashboardInfoFragment", "Received estateId: $estateId")
+
+        binding.btnBack.setOnClickListener {
+            Navigation.findNavController(requireView()).popBackStack()
+        }
     }
 
     private fun getalldata() {
@@ -877,8 +883,6 @@ class GraphsFragment : Fragment() {
                                                                                                                             val esi =
                                                                                                                                 (eyr / elr)
 
-
-
                                                                                                                             try {
                                                                                                                                 requireActivity().runOnUiThread {
                                                                                                                                     binding.renovables1.text =
@@ -1075,15 +1079,9 @@ class GraphsFragment : Fragment() {
                                                                                                                                     val chart3: BarChart =
                                                                                                                                         binding.chart3
                                                                                                                                     val entries3 =
+
                                                                                                                                         ArrayList<BarEntry>()
 
-
-                                                                                                                                    entries3.add(
-                                                                                                                                        BarEntry(
-                                                                                                                                            0f,
-                                                                                                                                            plantingsum.toFloat()
-                                                                                                                                        )
-                                                                                                                                    )
                                                                                                                                     entries3.add(
                                                                                                                                         BarEntry(
                                                                                                                                             1f,
@@ -1212,7 +1210,6 @@ class GraphsFragment : Fragment() {
                                                                                                                                             Color.GREEN,
                                                                                                                                             Color.GREEN,
                                                                                                                                             Color.GREEN,
-                                                                                                                                            Color.RED,
                                                                                                                                             Color.RED,
                                                                                                                                             Color.RED,
                                                                                                                                             Color.RED,

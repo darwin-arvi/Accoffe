@@ -127,27 +127,27 @@ class PreProcessingInfoFragment : Fragment() {
                         this.estateInfoModel.transformidad_t5 = transformidad_t5
                         val dolar = estateDataModel.b_dolar
 
-                        binding.item12.text=estateInfoModel.flujo1.toString()
-                        binding.item13.text =estateInfoModel.transformidad_t1.toString()
-                        binding.item14.text =estateInfoModel.t1.toString()
+                        binding.item12.text=String.format("%.2e",estateInfoModel.flujo1)
+                        binding.item13.text =String.format("%.2e",estateInfoModel.transformidad_t1)
+                        binding.item14.text =String.format("%.2e",estateInfoModel.t1)
 
-                        binding.item22.text=estateInfoModel.flujo2.toString()
-                        binding.item23.text =estateInfoModel.transformidad_t2.toString()
-                        binding.item24.text =estateInfoModel.t2.toString()
+                        binding.item22.text=String.format("%.2e",estateInfoModel.flujo2)
+                        binding.item23.text =String.format("%.2e",estateInfoModel.transformidad_t2)
+                        binding.item24.text =String.format("%.2e",estateInfoModel.t2)
 
-                        binding.item32.text=estateInfoModel.flujo3.toString()
-                        binding.item33.text =estateInfoModel.transformidad_t1.toString()
-                        binding.item34.text =estateInfoModel.t3.toString()
+                        binding.item32.text=String.format("%.2e",estateInfoModel.flujo3)
+                        binding.item33.text =String.format("%.2e",estateInfoModel.transformidad_t1)
+                        binding.item34.text =String.format("%.2e",estateInfoModel.t3)
 
-                        binding.item42.text=estateInfoModel.flujo4.toString()
-                        binding.item43.text =estateInfoModel.transformidad_t1.toString()
-                        binding.item44.text =estateInfoModel.t4.toString()
+                        binding.item42.text=String.format("%.2e",estateInfoModel.flujo4)
+                        binding.item43.text =String.format("%.2e",estateInfoModel.transformidad_t1)
+                        binding.item44.text =String.format("%.2e",estateInfoModel.t4)
 
-                        binding.item52.text=estateInfoModel.b_num_costales.toString()
-                        binding.item53.text =estateInfoModel.transformidad_t5.toString()
-                        binding.item54.text =estateInfoModel.t5.toString()
+                        binding.item52.text=String.format("%.2e",estateInfoModel.b_num_costales)
+                        binding.item53.text =String.format("%.2e",estateInfoModel.transformidad_t5)
+                        binding.item54.text =String.format("%.2e",estateInfoModel.t5)
 
-                        binding.item61.text =estateInfoModel.total.toString()
+                        binding.item61.text =String.format("%.2e",estateInfoModel.total)
 
                     }
 
